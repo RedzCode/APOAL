@@ -1,0 +1,38 @@
+.wrapper {
+    margin: 15px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper{
+    background-color: rgb(255, 208, 0);
+    height: 1000px;
+    padding: 3%;
+}
+
+.wrapper-form{
+    background-color: rgb(255, 208, 0);
+    padding: 3%;
+}
+
+h1{
+    text-align: center;
+}
