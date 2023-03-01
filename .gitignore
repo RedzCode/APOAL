@@ -1,0 +1,34 @@
+# Cache files
+*.cache
+cache/
+Cache/
+
+# Log files
+*.log
+logs/*
+
+# Temp files
+*.tmp
+tmp/*
+temp/*
+*.swp
+~*
+*~
+._*
+
+# IDE files
+# JetBrains IDEs
+/.idea*
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Setting database
+settings/local.php
+
+# data files
+data/
