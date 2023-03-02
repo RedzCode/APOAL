@@ -53,3 +53,49 @@ function exchangeNumber($pdo, $mail1, $mail2)
 
     return $success;
 }
+
+function createExchange($pdo, $mail1, $mail2)
+{
+    $query = "Insert Into exchange (`mail1`, `mail2`) VALUES (:mail1,:mail2) ";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':mail1', $mail1);
+    $stmt->bindValue(':mail2', $mail2);
+    $success = $stmt->execute();
+
+    return $success;
+}
+
+function getNumExchange($pdo, $mail1, $mail2)
+{
+    $query = "SELECT numExchange FROM exchange Where mail1 = :mail1 and mail2 = :mail2";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':mail1', $mail1);
+    $stmt->bindValue(':mail2', $mail2);
+    $stmt->execute();
+
+    return $stmt;
+}
+
+function getEmailsPlayers($pdo, $num)
+{
+    $query = "SELECT mail1, mail2 FROM exchange Where numExchange = :num";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':num', $num);
+    $stmt->execute();
+
+    return $stmt;
+}
+
+function deleteExchange($pdo, $num)
+{
+    $query = "DELETE FROM `exchange` WHERE numExchange = :num";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':num', $num);
+    $stmt->execute();
+
+    return $stmt;
+}

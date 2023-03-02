@@ -1,6 +1,6 @@
 <nav>
     <div>
-        <a href="../screens/players.php"><img src=../assets/Apoal_Logo.png width="10%" height="..." alt="logo_apoal" />
+        <a href="../screens/players.php"><img src=../assets/Logo.png width="10%" height="..." alt="logo_apoal" />
         </a>
     </div>
 </nav>

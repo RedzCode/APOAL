@@ -3,10 +3,16 @@ require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'GET') {
-    if (!empty($_GET['mail1']) and !empty($_GET['mail2'])) {
-        $mail1 = $_GET['mail1'];
-        $mail2 = $_GET['mail2'];
+    if (!empty($_GET['num'])) { //verify secret code
+        $code = $_GET['num'];
+        $num = $code[strlen($code) - 1];
+        $emails = getEmailsPlayers($pdo, $num)->fetchAll();
+        $mail1 = $emails[0]['mail1'];
+        $mail2 = $emails[0]['mail2'];
         $stmt = exchangeNumber($pdo, $mail1, $mail2);
+        // Check both validate
+        //Then delete
+        $stmt = deleteExchange($pdo, $num);
     }
 }
 
