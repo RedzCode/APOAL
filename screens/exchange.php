@@ -1,11 +1,8 @@
 <?php
 require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
+$emails = getAllEmails($pdo)->fetchAll();
 
-// un echange à la fois NON
-// lien pour refuser échange
-// Temps limite pour refuser un échange ? 
-// annuler echqnge sur la page envoie mail
 // handle error
 
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
@@ -16,15 +13,15 @@ if ($request_method === 'POST') {
         $code1 = random_int(0, 499);
         $code2 = random_int(500, 1000);
 
-        if (createExchange($pdo, $mail1, $mail2, $code1, $code2)) { //success
-            $num = getNumExchange($pdo, $mail1, $mail2)->fetch();
-            var_dump($num['numExchange']);
-            $numCrypted = password_hash($num['numExchange'], PASSWORD_BCRYPT);
+        if (createExchange($pdo, $mail1, $mail2, $code1, $code2)) {
+            $resnum = getNumExchange($pdo, $mail1, $mail2)->fetchAll();
+            $num = $resnum[sizeof($resnum) - 1]['numExchange'];
+            $numCrypted = password_hash($num, PASSWORD_BCRYPT);
 
             $content1 = 'Confirmez vous l echange ? Cliquez sur ce lien: http://localhost/apoal/screens/validation.php?num='
-                . $numCrypted . '' . $num['numExchange'] . '&code=' . $code1;
+                . $numCrypted . '-' . $num . '&code=' . $code1;
             $content2 = 'Confirmez vous l echange ? Cliquez sur ce lien: http://localhost/apoal/screens/validation.php?num='
-                . $numCrypted . '' . $num['numExchange'] . '&code=' . $code2;
+                . $numCrypted . '-' . $num . '&code=' . $code2;
             echo $content1;
             echo '</br>';
             echo $content2;
@@ -58,16 +55,27 @@ require_once("../includes/head.php") ?>
     <section>
         <div class='wrapper-form'>
             <form method="post" action="">
+
                 <label for="mail1">Email joueur 1</label>
-                <input type="email" id="mail1" name="mail1" placeholder="Email du joueur 1" required>
+                <select name="mail1" id="mail1" required>
+                    <option value="">--- Choisi un email ---</option>
+                    <?php foreach ($emails as $email) { ?>
+                    <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
+                    <?php }; ?>
+                </select>
 
                 <label for="mail2">Email joueur 2</label>
-                <input type="email" id="mail2" name="mail2" placeholder="Email du joueur 2" required>
-
-                <input type="submit" value="Valider">
+                <select name="mail2" id="mail2" required>
+                    <option value="">--- Choisi un email ---</option>
+                    <?php foreach ($emails as $email) { ?>
+                    <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
+                    <?php }; ?>
+                </select>
+                <input type="submit" value="Valider" id="btn-exchange" disabled>
             </form>
         </div>
     </section>
 </body>
+<script src="../js/exchange.js"></script>
 
 </html>

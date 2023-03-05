@@ -4,14 +4,3 @@
         </a>
     </div>
 </nav>
-
-<script>
-$(function() {
-    $('.btn').each(function() {
-        if ($(this).prop('href') == window.location.href) {
-            $(this).addClass('active');
-            $(this).parents('li').addClass('active');
-        }
-    });
-});
-</script>

@@ -9,13 +9,12 @@ function getAllPlayers($pdo)
     return $stmt;
 }
 
-function getNumBoxes($pdo, $mail1, $mail2)
+function getNumBox($pdo, $mail)
 {
-    $query = "SELECT NumBox FROM player Where Email in ( :mail1, :mail2)";
+    $query = "SELECT NumBox FROM player Where Email = :mail";
 
     $stmt = $pdo->prepare($query);
-    $stmt->bindValue(':mail1', $mail1);
-    $stmt->bindValue(':mail2', $mail2);
+    $stmt->bindValue(':mail', $mail);
     $stmt->execute();
 
     return $stmt;
@@ -23,10 +22,8 @@ function getNumBoxes($pdo, $mail1, $mail2)
 
 function exchangeNumber($pdo, $mail1, $mail2)
 {
-    $numBoxes = getNumBoxes($pdo, $mail1, $mail2)->fetchAll();
-
-    $numbox1 = $numBoxes[0]['NumBox'];
-    $numbox2 = $numBoxes[1]['NumBox'];
+    $numbox1 = (getNumBox($pdo, $mail1)->fetch())['NumBox'];
+    $numbox2 = (getNumBox($pdo, $mail2)->fetch())['NumBox'];
 
     $query = "UPDATE player SET NumBox = :numbox WHERE Email= :email";
 
@@ -45,9 +42,7 @@ function exchangeNumber($pdo, $mail1, $mail2)
         $stmt2->bindValue(':numbox', $numbox2);
         $stmt2->bindValue(':email', $mail1);
 
-
         $success = $stmt1->execute();
-
         $success = $stmt2->execute();
     }
 
@@ -112,6 +107,16 @@ function getEmailsPlayers($pdo, $num)
 
     $stmt = $pdo->prepare($query);
     $stmt->bindValue(':num', $num);
+    $stmt->execute();
+
+    return $stmt;
+}
+
+function getAllEmails($pdo)
+{
+    $query = "SELECT email FROM player";
+
+    $stmt = $pdo->prepare($query);
     $stmt->execute();
 
     return $stmt;

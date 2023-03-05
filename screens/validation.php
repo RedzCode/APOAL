@@ -1,11 +1,14 @@
 <?php
 require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
+
+$texte = "Cet échange n'existe pas!";
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'GET') {
     if (!empty($_GET['num']) and !empty($_GET['code'])) { //verify secret code
         $num = $_GET['num'];
-        $numExchange = $num[strlen($num) - 1];
+        $index = strrpos($num, '-', 0);
+        $numExchange = substr($num, $index + 1);
 
         $res = getExchange($pdo, $numExchange)->fetchAll();
         if (!empty($res)) {
@@ -31,18 +34,13 @@ if ($request_method === 'GET') {
                     $stmt = exchangeNumber($pdo, $mail1, $mail2);
                     //wait exchange has been successful
                     $stmt = deleteExchange($pdo, $numExchange);
-                    echo "Echange réussi";
+                    $texte = "Vos numéros ont été échangé! Que la chance soit avec vous !";
+                    //mail confirmation ech ?
                 } else {
-                    echo "Merci d'avoir validé ! Echange en cours... Votre partenaire n'a pas encore validé";
+                    $texte = "Merci d'avoir validé ! Echange en cours... En attente de votre partenaire";
                 }
-            } else {
-                echo "Lien erroné";
             }
-        } else {
-            echo "Lien erroné";
         }
-    } else {
-        echo "Lien erroné";
     }
 }
 
@@ -61,7 +59,8 @@ require_once("../includes/head.php") ?>
     <h1>Validation échange</h1>
     <section>
         <div class='wrapper-form'>
-            Vos numéros ont été échangé! Que la chance soit avec vous !
+            <?= $texte ?>
+
         </div>
     </section>
 </body>
