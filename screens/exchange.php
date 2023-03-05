@@ -2,7 +2,7 @@
 require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
 
-// un echange à la fois
+// un echange à la fois NON
 // lien pour refuser échange
 // Temps limite pour refuser un échange ? 
 // annuler echqnge sur la page envoie mail
@@ -13,13 +13,21 @@ if ($request_method === 'POST') {
     if (!empty($_POST['mail1']) and !empty($_POST['mail2'])) {
         $mail1 = $_POST['mail1'];
         $mail2 = $_POST['mail2'];
-        if (createExchange($pdo, $mail1, $mail2)) { //success
+        $code1 = random_int(0, 499);
+        $code2 = random_int(500, 1000);
+
+        if (createExchange($pdo, $mail1, $mail2, $code1, $code2)) { //success
             $num = getNumExchange($pdo, $mail1, $mail2)->fetch();
             var_dump($num['numExchange']);
             $numCrypted = password_hash($num['numExchange'], PASSWORD_BCRYPT);
-            //envoie code privé dans le mail de chacun
-            $content = 'Confirmez vous l echange ? Cliquez sur ce lien: http://localhost/apoal/screens/validation.php?num=' . $numCrypted . '' . $num['numExchange'];
-            echo $content;
+
+            $content1 = 'Confirmez vous l echange ? Cliquez sur ce lien: http://localhost/apoal/screens/validation.php?num='
+                . $numCrypted . '' . $num['numExchange'] . '&code=' . $code1;
+            $content2 = 'Confirmez vous l echange ? Cliquez sur ce lien: http://localhost/apoal/screens/validation.php?num='
+                . $numCrypted . '' . $num['numExchange'] . '&code=' . $code2;
+            echo $content1;
+            echo '</br>';
+            echo $content2;
             echo "<script>alert('Un mail de confirmation a été envoyé aux 2 joueurs')</script>";
         }
 
