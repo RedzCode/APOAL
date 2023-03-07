@@ -51,7 +51,7 @@ function exchangeNumber($pdo, $mail1, $mail2)
 
 function createExchange($pdo, $mail1, $mail2, $code1, $code2)
 {
-    $query = "Insert Into exchange (`mail1`, `mail2`,`code1`, `code2`) VALUES (:mail1,:mail2, :code1, :code2) ";
+    $query = "Insert Into ongoingexchange (`mail1`, `mail2`,`code1`, `code2`) VALUES (:mail1,:mail2, :code1, :code2) ";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindValue(':mail1', $mail1);
@@ -65,7 +65,7 @@ function createExchange($pdo, $mail1, $mail2, $code1, $code2)
 
 function getNumExchange($pdo, $mail1, $mail2)
 {
-    $query = "SELECT numExchange FROM exchange Where mail1 = :mail1 and mail2 = :mail2";
+    $query = "SELECT numExchange FROM ongoingexchange Where mail1 = :mail1 and mail2 = :mail2";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindValue(':mail1', $mail1);
@@ -77,7 +77,7 @@ function getNumExchange($pdo, $mail1, $mail2)
 
 function getExchange($pdo, $numExchange)
 {
-    $query = "SELECT * FROM exchange Where numExchange = :numExchange";
+    $query = "SELECT * FROM ongoingexchange Where numExchange = :numExchange";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindValue(':numExchange', $numExchange);
@@ -89,9 +89,9 @@ function getExchange($pdo, $numExchange)
 function setValidate($pdo, $numExchange, $nb)
 {
     if ($nb == 1)
-        $query = "UPDATE exchange SET validate1 = 1 WHERE numExchange = :numExchange";
+        $query = "UPDATE ongoingexchange SET validate1 = 1 WHERE numExchange = :numExchange";
     else
-        $query = "UPDATE exchange SET validate2 = 1 WHERE numExchange = :numExchange";
+        $query = "UPDATE ongoingexchange SET validate2 = 1 WHERE numExchange = :numExchange";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindValue(':numExchange', $numExchange);
@@ -103,7 +103,7 @@ function setValidate($pdo, $numExchange, $nb)
 
 function getEmailsPlayers($pdo, $num)
 {
-    $query = "SELECT mail1, mail2 FROM exchange Where numExchange = :num";
+    $query = "SELECT mail1, mail2 FROM ongoingexchange Where numExchange = :num";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindValue(':num', $num);
@@ -122,12 +122,38 @@ function getAllEmails($pdo)
     return $stmt;
 }
 
-function deleteExchange($pdo, $num)
+function saveExchange($pdo, $num)
 {
-    $query = "DELETE FROM `exchange` WHERE numExchange = :num";
+    $emails = getEmailsPlayers($pdo, $num)->fetchAll();
+    $query = "INSERT INTO `doneexchange` (`mail1`, `mail2`) VALUES (:mail1,:mail2) ";
 
     $stmt = $pdo->prepare($query);
-    $stmt->bindValue(':num', $num);
+    $stmt->bindValue(':mail1', $emails[0]['mail1']);
+    $stmt->bindValue(':mail2', $emails[0]['mail2']);
+    $stmt->execute();
+
+    return $stmt;
+}
+
+function deleteExchange($pdo, $num)
+{
+    $stmt = saveExchange($pdo, $num);
+    if ($stmt) {
+        $query = "DELETE FROM `ongoingexchange` WHERE numExchange = :num";
+
+        $stmt = $pdo->prepare($query);
+        $stmt->bindValue(':num', $num);
+        $stmt->execute();
+    }
+
+    return $stmt;
+}
+
+function getAllDoneExchange($pdo)
+{
+    $query = "SELECT * FROM doneexchange";
+
+    $stmt = $pdo->prepare($query);
     $stmt->execute();
 
     return $stmt;
