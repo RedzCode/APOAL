@@ -16,8 +16,7 @@ require_once("../includes/head.php") ?>
     <h1 class="pb-2">Liste des joueurs</h1>
 
     <div class="table-responsive" id="no-more-tables">
-        <table class="table bg-white  table-striped" data-search="true" data-pagination="true"
-            data-page-list="[10, 25, 50, 100, all]">
+        <table class="table bg-white  table-striped" id="player-table" data-search="true" data-pagination="true" data-page-list="[10, 25, 50, 100, all]">
             <thead class="bg-dark text-light">
                 <tr>
                     <th data-sortable="true">#</th>
