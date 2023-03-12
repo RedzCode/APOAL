@@ -16,14 +16,15 @@ require_once("../includes/head.php") ?>
     <h1 class="pb-2">Liste des joueurs</h1>
 
     <div class="table-responsive" id="no-more-tables">
-        <table class="table bg-white">
+        <table class="table bg-white  table-striped" data-search="true" data-pagination="true"
+            data-page-list="[10, 25, 50, 100, all]">
             <thead class="bg-dark text-light">
                 <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Biography</th>
+                    <th data-sortable="true">#</th>
+                    <th data-sortable="true">First Name</th>
+                    <th data-sortable="true">Last Name</th>
+                    <th data-sortable="true">Email</th>
+                    <th data-sortable="true">Biography</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,5 +54,6 @@ require_once("../includes/head.php") ?>
     </div>
 
 </body>
+<script src="../js/table.js"></script>
 
 </html>
