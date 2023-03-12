@@ -35,18 +35,18 @@ require_once("../includes/head.php") ?>
                     <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
                 </tr>
                 <tr>
-                    <td>2</td>
-                    <td>John</td>
-                    <td>Carter</td>
-                    <td>johncarter@mail.com</td>
-                    <td>Vestibulum consectetur scelerisque bibendum scelerisque purus.</td>
+                    <td data-title="#">1</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
                 </tr>
                 <tr>
-                    <td>3</td>
-                    <td>Peter</td>
-                    <td>Parker</td>
-                    <td>peterparker@mail.com</td>
-                    <td>Integer pulvinar leo id risus interdum vel metus dignissim.</td>
+                    <td data-title="#">1</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
                 </tr>
             </tbody>
         </table>
