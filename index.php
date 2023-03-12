@@ -1,4 +1,6 @@
 <?php
-require(__DIR__ . '/../vendor/autoload.php');
+require(__DIR__ . '/vendor/autoload.php');
 
-header("Location: screens/players.php");
+//header("Location: screens/players.php");
+
+echo "hello there heroku";
