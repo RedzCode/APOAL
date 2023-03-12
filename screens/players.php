@@ -20,30 +20,30 @@ require_once("../includes/head.php") ?>
             <div class='row'>
                 <?php
                 foreach ($players as $player) { ?>
-                <div class='column'>
-                    <div>
-                        Nom |
-                        Prénom |
-                        Email |
-                        Date dernier échange |
-                        Numéro
+                    <div class='column'>
+                        <div>
+                            Nom |
+                            Prénom |
+                            Email |
+                            Date dernier échange |
+                            Numéro
+                        </div>
                     </div>
-                </div>
                 <?php } ?>
             </div>
             </br>
             <div class='row'>
                 <?php
                 foreach ($players as $player) { ?>
-                <div class='column'>
-                    <div>
-                        <?php echo $player['Name'] ?> |
-                        <?php echo $player['FamilyName'] ?> |
-                        <?php echo $player['Email'] ?> |
-                        <?php echo $player['LastExchangeDate'] ?> |
-                        <?php echo $player['NumBox'] ?>
+                    <div class='column'>
+                        <div>
+                            <?php echo $player['Name'] ?> |
+                            <?php echo $player['FamilyName'] ?> |
+                            <?php echo $player['Email'] ?> |
+                            <?php echo $player['LastExchangeDate'] ?> |
+                            <?php echo $player['NumBox'] ?>
+                        </div>
                     </div>
-                </div>
                 <?php } ?>
             </div>
         </div>

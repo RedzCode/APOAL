@@ -14,25 +14,21 @@ require_once("../includes/head.php") ?>
 
 <body>
     <h1>Test</h1>
-    <section>
-        <div class='wrapper'>
-            <div class='row'>
-                <?php
-                foreach ($players as $player) { ?>
-                    <div class='column'>
-                        <div>
-                            <?php echo $player['Name'] ?> |
-                            <?php echo $player['FamilyName'] ?> |
-                            <?php echo $player['Email'] ?> |
-                            <?php echo $player['LastExchangeDate'] ?> |
-                            <?php echo $player['NumBox'] ?>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
-    </section>
+    <table id="table" data-show-columns="true" data-search="true" data-url="json/data1.json" data-mobile-responsive="true" data-check-on-init="true">
+        <thead>
+            <tr>
+                <th data-field="id" data-sortable="true">ID</th>
+                <th data-field="name" data-sortable="true">Item Name</th>
+                <th data-field="price" data-sortable="true">Item Price</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script>
+        $(function() {
+            $('#table').bootstrapTable()
+        })
+    </script>
 </body>
-<!-- https://codepen.io/ajlohman/pen/GRWYWw -->
 
 </html>
