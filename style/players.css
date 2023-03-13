@@ -25,11 +25,11 @@
 
     #no-more-tables tr{
         border-bottom: 1px solid #ccc;
-        margin-bottom: 10%;
+        margin-bottom: 8%;
     }
 }
 
 
 .number-box{
-    background-color:  #ffab62 !important;
+    background-color: #ffd240 !important; /* #ffab62 orange */
 }

@@ -20,7 +20,7 @@
                 </li>
             </ul>
             <span class="navbar-text" style="color: #bf5800; font-style: italic;">
-                Que la chance soit avec vous
+                Que la chance soit avec vous &#10024
             </span>
         </div>
     </div>
