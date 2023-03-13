@@ -8,7 +8,8 @@ if ($request_method === 'POST') {
         $name = $_POST['prenom'];
         $famName = $_POST['nom'];
         $email = $_POST['email'];
-        createPlayer($pdo, $name, $famName, $email);
+        $t = createPlayer($pdo, $name, $famName, $email);
+        var_dump($t);
     }
 }
 ?>
@@ -42,7 +43,9 @@ require_once("../includes/head.php") ?>
             </form>
 
         </section>
-        <img src="../assets/registration_player.gif" alt="meme-gif-Deal-or-not-deal">
+        <div style="text-align: center;"> <img src="../assets/registration_player.gif" alt="meme-gif-Deal-or-not-deal">
+        </div>
+
     </div>
     <?php require("../includes/footer.php") ?>
 </body>
