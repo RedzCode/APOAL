@@ -11,8 +11,7 @@ class SendEmail
         $email->setFrom("poulpyshow@ensc.fr", "PoulpyShow");
         $email->setSubject("&#x1F419 APOAL - Confirmation échange"); //1F441 => eye
         $email->addTo($to);
-        $email->addContent("text/plain", "SALUT JOUEUR");
-        $email->addContent("text/plain", $content);
+        $email->addContent("text/plain", "SALUT JOUEUR" . $content);
         //$link =  "<p>" . $content . "</p>";
         $email->addContent(
             "text/html",
