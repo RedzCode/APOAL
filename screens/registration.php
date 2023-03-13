@@ -15,8 +15,8 @@ if ($request_method === 'POST') {
             // Remove and return the last part, which should be the domain
             $domain = array_pop($parts);
 
-            // Check if the domain is in our list
             if ($domain == "@esnc.fr") {
+                var_dump("here");
                 createPlayer($pdo, $name, $famName, $email);
             }
         }
