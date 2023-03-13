@@ -8,7 +8,18 @@ if ($request_method === 'POST') {
         $name = $_POST['prenom'];
         $famName = $_POST['nom'];
         $email = $_POST['email'];
-        createPlayer($pdo, $name, $famName, $email);
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            // Separate string by @ characters (there should be only one)
+            $parts = explode('@', $email);
+
+            // Remove and return the last part, which should be the domain
+            $domain = array_pop($parts);
+
+            // Check if the domain is in our list
+            if ($domain == "@esnc.fr") {
+                createPlayer($pdo, $name, $famName, $email);
+            }
+        }
     }
 }
 ?>
@@ -40,7 +51,7 @@ require_once("../includes/head.php") ?>
                         <label for="email" class="form-label">Email ENSC</label>
                         <input type="email" class="form-control" id="email-register" name="email" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                    <button type="submit" class="btn btn-primary btn-apoal">S'inscrire</button>
                 </form>
             </div>
         </section>
