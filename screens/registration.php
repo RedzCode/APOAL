@@ -1,7 +1,7 @@
 <?php
 require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
-
+var_dump(createPlayer($pdo, "defg", "ddd", "fef"));
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'POST') {
     if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['email'])) {
@@ -10,6 +10,7 @@ if ($request_method === 'POST') {
         $email = $_POST['email'];
         $t = createPlayer($pdo, $name, $famName, $email);
         var_dump($t);
+        var_dump("hzllo");
     }
 }
 ?>
@@ -37,7 +38,7 @@ require_once("../includes/head.php") ?>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="mail" class="form-control" id="email-register" name="email" required>
+                    <input type="email" class="form-control" id="email-register" name="email" required>
                 </div>
                 <button type="submit" class="btn btn-primary">S'inscrire</button>
             </form>
