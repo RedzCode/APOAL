@@ -11,9 +11,9 @@ function getAllPlayers($pdo)
 
 function createPlayer($pdo, $name, $familyName, $email)
 {
-    $numbox = 15;
+    $numbox = getNextNumBox($pdo);
 
-    /*   $query = "INSERT INTO `player` (`Name`, `FamilyName`, `Email`, `NumBox`) VALUES (:name,:familyName,:email,:numbox) ";
+    $query = "INSERT INTO `player` (`Name`, `FamilyName`, `Email`, `NumBox`) VALUES (:name,:familyName,:email,:numbox) ";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindValue(':name', $name);
@@ -22,8 +22,7 @@ function createPlayer($pdo, $name, $familyName, $email)
     $stmt->bindValue(':numbox', $numbox);
     $stmt->execute();
 
-    return $stmt;*/
-    return getNextNumBox($pdo);
+    return $stmt;
 }
 
 

@@ -8,9 +8,7 @@ if ($request_method === 'POST') {
         $name = $_POST['prenom'];
         $famName = $_POST['nom'];
         $email = $_POST['email'];
-        $t = createPlayer($pdo, $name, $famName, $email);
-        var_dump($t);
-        var_dump("hzllo");
+        createPlayer($pdo, $name, $famName, $email);
     }
 }
 ?>
