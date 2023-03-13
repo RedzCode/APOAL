@@ -24,8 +24,10 @@ class SendEmail
             /*print $response->statusCode() . "\n";
             print_r($response->headers());
             print $response->body() . "\n";*/
+            return $response;
         } catch (Exception $e) {
             echo 'Caught exception: ' . $e->getMessage() . "\n";
+            return false;
         }
     }
 }
