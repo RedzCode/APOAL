@@ -21,7 +21,7 @@ require_once("../includes/head.php") ?>
                 <table class="table table-bordered  bg-white  table-striped display" id="player-table" data-toggle="table" data-locale="fr-FR" data-search="true" data-pagination="true" data-page-list="[5, 25, 50, 100, all]">
                     <thead class="bg-dark text-light">
                         <tr>
-                            <th data-sortable="true">#</th>
+                            <th data-sortable="true">&#1F381</th>
                             <th data-sortable="true">Prénom</th>
                             <th data-sortable="true">Nom</th>
                             <th data-sortable="true">Email</th>
