@@ -1,6 +1,12 @@
 <?php
 require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
+
+$request_method = strtoupper($_SERVER['REQUEST_METHOD']);
+if ($request_method === 'POST') {
+    if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['email'])) {
+    }
+}
 ?>
 
 <!doctype html>
@@ -30,8 +36,9 @@ require_once("../includes/head.php") ?>
                 </div>
                 <button type="submit" class="btn btn-primary">S'inscrire</button>
             </form>
-            <img src="../assets/registration_player.gif" alt="meme-gif-Deal-or-not-deal">
+
         </section>
+        <img src="../assets/registration_player.gif" alt="meme-gif-Deal-or-not-deal">
     </div>
     <?php require("../includes/footer.php") ?>
 </body>

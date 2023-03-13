@@ -57,12 +57,12 @@ require_once("../includes/head.php") ?>
 <body>
     <?php require("../includes/navigation.php") ?>
     <h1>Validation échange</h1>
-    <section>
+    <section class="container">
         <div class='wrapper-form'>
             <?= $texte ?>
-
         </div>
     </section>
+    <?php require("../includes/footer.php") ?>
 </body>
 
 </html>

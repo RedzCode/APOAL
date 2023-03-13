@@ -15,33 +15,34 @@ require_once("../includes/head.php") ?>
 <body>
     <?php require("../includes/navigation.php") ?>
     <h1>Liste des échanges</h1>
-    <section>
+    <section class="container">
         <div class='wrapper'>
             <div class='row'>
                 <?php
                 foreach ($exchanges as $exchange) { ?>
-                <div class='column'>
-                    <div>
-                        échange
+                    <div class='column'>
+                        <div>
+                            échange
+                        </div>
                     </div>
-                </div>
                 <?php } ?>
             </div>
             </br>
             <div class='row'>
                 <?php
                 foreach ($exchanges as $exchange) { ?>
-                <div class='column'>
-                    <div>
-                        <?php echo $exchange['numExchange'] ?> |
-                        <?php echo $exchange['mail1'] ?> |
-                        <?php echo $exchange['mail2'] ?> |
+                    <div class='column'>
+                        <div>
+                            <?php echo $exchange['numExchange'] ?> |
+                            <?php echo $exchange['mail1'] ?> |
+                            <?php echo $exchange['mail2'] ?> |
+                        </div>
                     </div>
-                </div>
                 <?php } ?>
             </div>
         </div>
     </section>
+    <?php require("../includes/footer.php") ?>
 </body>
 
 </html>
