@@ -33,8 +33,7 @@ function getNextNumBox($pdo)
 
     $stmt = $pdo->prepare($query);
     $stmt->execute();
-    $val = $stmt->fetch();
-    var_dump($val);
+    $val = (int) ($stmt->fetch())[0];
     $val++;
 
     return $val;
