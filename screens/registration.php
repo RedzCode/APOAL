@@ -5,6 +5,10 @@ require __DIR__ . '/../sqlQuery.php';
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'POST') {
     if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['email'])) {
+        $name = $_POST['prenom'];
+        $famName = $_POST['nom'];
+        $email = $_POST['email'];
+        createPlayer($pdo, $name, $famName, $email);
     }
 }
 ?>

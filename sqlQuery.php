@@ -9,6 +9,38 @@ function getAllPlayers($pdo)
     return $stmt;
 }
 
+function createPlayer($pdo, $name, $familyName, $email)
+{
+    var_dump(getNextNumBox($pdo));
+    $numbox = 15;
+
+    /*   $query = "INSERT INTO `player` (`Name`, `FamilyName`, `Email`, `NumBox`) VALUES (:name,:familyName,:email,:numbox) ";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':name', $name);
+    $stmt->bindValue(':familyName', $familyName);
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':numbox', $numbox);
+    $stmt->execute();
+
+    return $stmt;*/
+}
+
+
+function getNextNumBox($pdo)
+{
+    $query = "SELECT MAX(NumBox) FROM player";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $val = $stmt->fetch();
+    $val++;
+
+    return $val;
+}
+
+
+
 function getNumBox($pdo, $mail)
 {
     $query = "SELECT NumBox FROM player Where Email = :mail";
