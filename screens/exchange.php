@@ -25,20 +25,11 @@ if ($request_method === 'POST') {
 
             SendEmail::SendMailConfirmation($mail1, $content1);
             SendEmail::SendMailConfirmation($mail2, $content2);
-            echo $content1;
+            /*    echo $content1;
             echo '</br>';
-            echo $content2;
+            echo $content2;*/
             echo "<script>alert('Un mail de confirmation a été envoyé aux 2 joueurs')</script>";
         }
-
-        /*  $content = 'Confirmez vous l echange ? Cliquez sur ce lien: http://localhost/apoal/screens/validation.php?mail1=' . $mail1 . '&mail2=' . $mail2;
-        echo $content;
-        echo "<script>alert('Un mail de confirmation a été envoyé aux 2 joueurs')</script>";*/
-        /*$retour = mail($mail1, 'Confirmation échange', $content, 'From:' . $mail2);
-        if ($retour) {
-            echo '<p>Votre message a bien été envoyé.</p>';
-            echo "<script>alert('Un mail de confirmation a été envoyé aux 2 joueurs')</script>";
-        }*/
     }
 }
 
