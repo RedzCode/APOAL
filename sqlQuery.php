@@ -1,7 +1,7 @@
 <?php
 function getAllPlayers($pdo)
 {
-    $query = "SELECT Name, FamilyName, Email, LastExchangeDate, NumBox FROM player";
+    $query = "SELECT * FROM player";
 
     $stmt = $pdo->prepare($query);
     $stmt->execute();

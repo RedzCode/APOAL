@@ -2,7 +2,7 @@
 require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
 $players = getAllPlayers($pdo)->fetchAll();
-var_dump($players);
+
 ?>
 
 <!doctype html>
