@@ -1,7 +1,7 @@
 <?php
 require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
-var_dump(createPlayer($pdo, "defg", "ddd", "fef"));
+
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'POST') {
     if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['email'])) {
