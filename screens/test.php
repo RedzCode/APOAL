@@ -13,26 +13,123 @@ $pageTitle = "test";
 require_once("../includes/head.php") ?>
 
 <body>
-    <h1>Test</h1>
-    <section>
-        <div class='wrapper'>
-            <div class='row'>
-                <?php
-                foreach ($players as $player) { ?>
-                    <div class='column'>
-                        <div>
-                            <?php echo $player['Name'] ?> |
-                            <?php echo $player['FamilyName'] ?> |
-                            <?php echo $player['Email'] ?> |
-                            <?php echo $player['LastExchangeDate'] ?> |
-                            <?php echo $player['NumBox'] ?>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
-    </section>
+    <h1 class="pb-2">Liste des joueurs</h1>
+
+    <div class="table-responsive" id="no-more-tables">
+        <table class="table table-bordered  bg-white  table-striped display" id="player-table" data-toggle="table" data-locale="fr-FR" data-search="true" data-pagination="true" data-page-list="[5, 25, 50, 100, all]">
+            <thead class="bg-dark text-light">
+                <tr>
+                    <th data-sortable="true">#</th>
+                    <th data-sortable="true">First Name</th>
+                    <th data-sortable="true">Last Name</th>
+                    <th data-sortable="true">Email</th>
+                    <th data-sortable="true">Biography</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-title="#">2</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">1</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">3</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">10</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">1</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">1</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">20</td>
+                    <td data-title="First Name">AAAA</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">1</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">1</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">1</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">1</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">1</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">1</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+                <tr>
+                    <td data-title="#">1</td>
+                    <td data-title="First Name">Clark</td>
+                    <td data-title="Last Name">Kent</td>
+                    <td data-title="Email">clarkkent@mail.com</td>
+                    <td data-title="Biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </body>
-<!-- https://codepen.io/ajlohman/pen/GRWYWw -->
+<script src="../js/table.js"></script>
 
 </html>
