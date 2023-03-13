@@ -26,7 +26,7 @@ require_once("../includes/head.php") ?>
     <div class="container">
         <h1 class="pb-2">Inscription</h1>
         <section>
-            <form>
+            <form action="" method="POST">
                 <div class="mb-3">
                     <label for="nom" class="form-label">Nom</label>
                     <input type="text" class="form-control" id="nom-register" name="nom" required>
