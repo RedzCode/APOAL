@@ -1,7 +1,7 @@
 <?php
 require '../vendor/autoload.php';
 require_once('../settings/connexion.php');
-require_once('../sendemail.php');
+require_once('../sendmail.php');
 require __DIR__ . '/../sqlQuery.php';
 $emails = getAllEmails($pdo)->fetchAll();
 
