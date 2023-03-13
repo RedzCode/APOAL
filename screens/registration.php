@@ -14,6 +14,7 @@ if ($request_method === 'POST') {
 
             // Remove and return the last part, which should be the domain
             $domain = array_pop($parts);
+            var_dump($domain);
 
             if ($domain == "@esnc.fr") {
                 var_dump("here");
