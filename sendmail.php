@@ -16,7 +16,10 @@ class SendEmail
         //$link =  "<p>" . $content . "</p>";
         $email->addContent(
             "text/html",
-            "<strong>HTML</strong>",
+            "<strong>HTML</strong>"
+        );
+        $email->addContent(
+            "text/html",
             "<p>" . $content . "</p>"
         );
         $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
