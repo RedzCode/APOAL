@@ -8,7 +8,7 @@ class SendEmail
     {
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom("poulpyshow@ensc.fr", "PoulpyShow");
-        $email->setSubject("\u{1F419} APOAL - Confirmation échange"); //1F441 => eye
+        $email->setSubject("\u{1F441} APOAL - Confirmation échange"); //1F441 => eye && 1F419 => octopus
         $email->addTo($to);
         $email->addContent("text/plain", "SALUT JOUEUR" . $content);
         $email->addContent(

@@ -25,65 +25,75 @@ require_once("../includes/head.php") ?>
                             <th data-sortable="true">Prénom</th>
                             <th data-sortable="true">Nom</th>
                             <th data-sortable="true">Email</th>
+                            <th data-sortable="true">Nombre échanges</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         foreach ($players as $player) { ?>
                             <tr>
-                                <td data-title="#"><?= $player['NumBox'] ?> </td>
+                                <td class="number-box" data-title="#"><?= $player['NumBox'] ?> </td>
                                 <td data-title="First Name"> <?= $player['Name'] ?> </td>
                                 <td data-title="Last Name"><?= $player['FamilyName'] ?></td>
                                 <td data-title="Email"><?= $player['Email'] ?></td>
+                                <td data-title="Nb exchange"><?= $player['CountExchange'] ?></td>
                             </tr>
                         <?php } ?>
                         <tr>
-                            <td data-title="#">2</td>
+                            <td class="number-box" data-title="#">2</td>
                             <td data-title="First Name"> POOO </td>
                             <td data-title="Last Name">TOOO</td>
                             <td data-title="Email">POPOP</td>
+                            <td data-title="Nb exchange">3</td>
                         </tr>
                         <tr>
-                            <td data-title="#">2</td>
+                            <td class="number-box" data-title="#">2</td>
                             <td data-title="First Name"> POOO </td>
                             <td data-title="Last Name">TOOO</td>
                             <td data-title="Email">POPOP</td>
+                            <td data-title="Nb exchange">3</td>
                         </tr>
                         <tr>
-                            <td data-title="#">2</td>
+                            <td class="number-box" data-title="#">2</td>
                             <td data-title="First Name"> POOO </td>
                             <td data-title="Last Name">TOOO</td>
                             <td data-title="Email">POPOP</td>
+                            <td data-title="Nb exchange">3</td>
                         </tr>
                         <tr>
-                            <td data-title="#">2</td>
+                            <td class="number-box" data-title="#">2</td>
                             <td data-title="First Name"> POOO </td>
                             <td data-title="Last Name">TOOO</td>
                             <td data-title="Email">POPOP</td>
+                            <td data-title="Nb exchange">3</td>
                         </tr>
                         <tr>
-                            <td data-title="#">2</td>
+                            <td class="number-box" data-title="#">2</td>
                             <td data-title="First Name"> POOO </td>
                             <td data-title="Last Name">TOOO</td>
                             <td data-title="Email">POPOP</td>
+                            <td data-title="Nb exchange">3</td>
                         </tr>
                         <tr>
-                            <td data-title="#">2</td>
+                            <td class="number-box" data-title="#">2</td>
                             <td data-title="First Name"> POOO </td>
                             <td data-title="Last Name">TOOO</td>
                             <td data-title="Email">POPOP</td>
+                            <td data-title="Nb exchange">3</td>
                         </tr>
                         <tr>
-                            <td data-title="#">2</td>
+                            <td class="number-box" data-title="#">2</td>
                             <td data-title="First Name"> POOO </td>
                             <td data-title="Last Name">TOOO</td>
                             <td data-title="Email">POPOP</td>
+                            <td data-title="Nb exchange">3</td>
                         </tr>
                         <tr>
-                            <td data-title="#">2</td>
+                            <td class="number-box" data-title="#">2</td>
                             <td data-title="First Name"> POOO </td>
                             <td data-title="Last Name">TOOO</td>
                             <td data-title="Email">POPOP</td>
+                            <td data-title="Nb exchange">3</td>
                         </tr>
 
                     </tbody>
