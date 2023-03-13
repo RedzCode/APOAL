@@ -1,4 +1,9 @@
 <?php
+
+use Monolog\Level;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 require '../vendor/autoload.php';
 require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
@@ -8,6 +13,10 @@ $emails = getAllEmails($pdo)->fetchAll();
 
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'POST') {
+    $log = new Logger('name');
+    $log->pushHandler(new StreamHandler('php://stderr', Level::Warning));
+
+    $log->warning('Foo');
     if (!empty($_POST['mail1']) and !empty($_POST['mail2'])) {
         $mail1 = $_POST['mail1'];
         $mail2 = $_POST['mail2'];
@@ -29,6 +38,10 @@ if ($request_method === 'POST') {
             echo "<script>alert('Un mail de confirmation a été envoyé aux 2 joueurs')</script>";
         }
 
+        $log = new Logger('other');
+        $log->pushHandler(new StreamHandler('php://stderr', Level::Warning));
+
+        $log->warning('intoooooooooooooooooooooo');
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom("poulpyshow@ensc.fr", "poulpyShow");
         $email->setSubject("Confirmation échange");
