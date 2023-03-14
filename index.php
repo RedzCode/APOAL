@@ -32,8 +32,11 @@ require('sqlQuery.php');
 
 <body>
     <div class="container">
-        <div class="banniere">
-            <a href="apoal/registration.php"><img src="/assets/banniere.PNG" alt="banniere"></a>
+        <div class="banniere" id="banniere-web">
+            <a href="apoal/registration.php"><img class="banniere-img" src="/assets/banniere.PNG" alt="banniere"></a>
+        </div>
+        <div class="banniere" id="banniere-mobile">
+            <a href="apoal/registration.php"><img class="banniere-img" src="/assets/banniere.PNG" alt="banniere"></a>
         </div>
         <div class="calendar">
             <div class="timeline">

@@ -27,7 +27,7 @@
         border-bottom: 1px solid #ccc;
         margin-bottom: 8%;
     }
-
+  
     .img-gif{
         width: 100%;
         height: auto;
@@ -44,6 +44,15 @@
     .active{
         border-radius: 15px;
     }
+
+    #banniere-web{
+        display: none;
+    }
+
+    #banniere-mobile{
+        display: block;
+    }
+      
 }
 
 

@@ -1,3 +1,15 @@
+.banniere-img{
+  width: 100%;
+  height: auto;
+}
+
+
+#banniere-mobile{
+  display: none;
+}
+
+
+
 .calendar {
   display: grid;
   gap: 10px;
