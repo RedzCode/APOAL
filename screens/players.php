@@ -32,70 +32,13 @@ require_once("../includes/head.php") ?>
                         <?php
                         foreach ($players as $player) { ?>
                             <tr>
-                                <td class="number-box" data-title="<?= "\u{1F381}" ?>"><?= $player['NumBox'] ?> </td>
-                                <td data-title="First Name"> <?= $player['Name'] ?> </td>
-                                <td data-title="Last Name"><?= $player['FamilyName'] ?></td>
+                                <td class="number-box" data-title="<?= "\u{1F381}" ?> Numéro"><?= $player['NumBox'] ?> </td>
+                                <td data-title="Prénom"> <?= $player['Name'] ?> </td>
+                                <td data-title="Nom"><?= $player['FamilyName'] ?></td>
                                 <td data-title="Email"><?= $player['Email'] ?></td>
-                                <td data-title="Nb exchange"><?= $player['CountExchange'] ?></td>
+                                <td data-title="Nombre échanges"><?= $player['CountExchange'] ?></td>
                             </tr>
                         <?php } ?>
-                        <tr>
-                            <td class="number-box" data-title="<?= "\u{1F381}" ?>">2</td>
-                            <td data-title="First Name"> POOO </td>
-                            <td data-title="Last Name">TOOO</td>
-                            <td data-title="Email">POPOP</td>
-                            <td data-title="Nb exchange">3</td>
-                        </tr>
-                        <tr>
-                            <td class="number-box" data-title="<?= "\u{1F381}" ?>">2</td>
-                            <td data-title="First Name"> POOO </td>
-                            <td data-title="Last Name">TOOO</td>
-                            <td data-title="Email">POPOP</td>
-                            <td data-title="Nb exchange">3</td>
-                        </tr>
-                        <tr>
-                            <td class="number-box" data-title="<?= "\u{1F381}" ?>">2</td>
-                            <td data-title="First Name"> POOO </td>
-                            <td data-title="Last Name">TOOO</td>
-                            <td data-title="Email">POPOP</td>
-                            <td data-title="Nb exchange">3</td>
-                        </tr>
-                        <tr>
-                            <td class="number-box" data-title="<?= "\u{1F381}" ?>">2</td>
-                            <td data-title="First Name"> POOO </td>
-                            <td data-title="Last Name">TOOO</td>
-                            <td data-title="Email">POPOP</td>
-                            <td data-title="Nb exchange">3</td>
-                        </tr>
-                        <tr>
-                            <td class="number-box" data-title="<?= "\u{1F381}" ?>">2</td>
-                            <td data-title="First Name"> POOO </td>
-                            <td data-title="Last Name">TOOO</td>
-                            <td data-title="Email">POPOP</td>
-                            <td data-title="Nb exchange">3</td>
-                        </tr>
-                        <tr>
-                            <td class="number-box" data-title="<?= "\u{1F381}" ?>">2</td>
-                            <td data-title="First Name"> POOO </td>
-                            <td data-title="Last Name">TOOO</td>
-                            <td data-title="Email">POPOP</td>
-                            <td data-title="Nb exchange">3</td>
-                        </tr>
-                        <tr>
-                            <td class="number-box" data-title="<?= "\u{1F381}" ?>">2</td>
-                            <td data-title="First Name"> POOO </td>
-                            <td data-title="Last Name">TOOO</td>
-                            <td data-title="Email">POPOP</td>
-                            <td data-title="Nb exchange">3</td>
-                        </tr>
-                        <tr>
-                            <td class="number-box" data-title="<?= "\u{1F381}" ?>">2</td>
-                            <td data-title="First Name"> POOO </td>
-                            <td data-title="Last Name">TOOO</td>
-                            <td data-title="Email">POPOP</td>
-                            <td data-title="Nb exchange">3</td>
-                        </tr>
-
                     </tbody>
                 </table>
             </div>

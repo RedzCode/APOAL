@@ -3,6 +3,8 @@ require '../vendor/autoload.php';
 require_once('../settings/connexion.php');
 require_once('../sendmail.php');
 require __DIR__ . '/../sqlQuery.php';
+session_start();
+
 $emails = getAllEmails($pdo)->fetchAll();
 
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
@@ -17,7 +19,7 @@ if ($request_method === 'POST') {
         $lastExchangePlayer2 = (getLastExchangePlayer($pdo, $mail2)->fetch())[0];
 
         if ($lastExchangePlayer1 == $mail2 && $lastExchangePlayer2 == $mail1) {
-            var_dump("Vous avez déjà fait un échange enseemble");
+            $error = "Impossible de faire un échange entre deux même joueurs à la suite. \nAu moins un des joueurs doit faire un échange avec un autre joueur";
         } else {
             if (createExchange($pdo, $mail1, $mail2, $code1, $code2)) {
                 $resnum = getNumExchange($pdo, $mail1, $mail2)->fetchAll();
@@ -33,8 +35,21 @@ if ($request_method === 'POST') {
                 SendEmail::SendMailConfirmation($mail2, $content2);
 
                 echo "<script>alert('Un mail de confirmation a été envoyé aux 2 joueurs')</script>";
+            } else {
+                $error = "Impossible d'échanger vos numéros... Contactez nous soit sur le mail PoulpyShow@ensc.fr, soit le messenger poulpyshow, soit en personne";
             }
         }
+    } else {
+        $error = "Vous n'avez pas rempli tout les champs";
+    }
+
+    $_SESSION['error'] = $error;
+    header("Location: exchange.php", true, 303);
+    exit();
+} elseif ($request_method === 'GET') {
+    if (isset($_SESSION['error'])) {
+        $error = $_SESSION['error'];
+        unset($_SESSION['error']);
     }
 }
 
@@ -53,6 +68,12 @@ require_once("../includes/head.php") ?>
     <!-- <h1>Echange entre joueurs</h1> -->
     <section class="container">
         <div class='wrapper-form'>
+            <?php if (!empty($error) && $error != "") { ?>
+                <div class="alert alert-danger">
+                    <strong>Erreur !</strong>
+                    <?= $error ?>
+                </div>
+            <?php } ?>
             <form method="post" action="">
 
                 <label for="mail1">Email joueur 1</label>
