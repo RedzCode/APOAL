@@ -17,9 +17,11 @@ if ($request_method === 'POST') {
 
             if ($domain == "ensc.fr") {
                 createPlayer($pdo, $name, $famName, $email);
+            } else {
+                $error = "L'email doit être un mail ensc.fr";
             }
         } else {
-            $error = "L'email doit être un mail ensc.fr";
+            $error = "L'email n'est pas dans un format correct ex: email@ensc.fr";
         }
     } else {
         $error = "Vous n'avez pas rempli tout les champs";
@@ -28,8 +30,8 @@ if ($request_method === 'POST') {
     var_dump($error);
     // place variables to sessions
     $_SESSION['error'] = $error;
-    // header("Location: registration.php", true, 303);
-    //exit();
+    header("Location: registration.php", true, 303);
+    exit();
 } elseif ($request_method === 'GET') {
     var_dump("no er");
     if (isset($_SESSION['error'])) {
