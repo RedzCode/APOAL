@@ -25,12 +25,13 @@ if ($request_method === 'POST') {
         $error = "Vous n'avez pas rempli tout les champs";
     }
 
+    var_dump($error);
     // place variables to sessions
     $_SESSION['error'] = $error;
-    header("Location: registration.php", true, 303);
-    exit();
+    // header("Location: registration.php", true, 303);
+    //exit();
 } elseif ($request_method === 'GET') {
-    var_dump("errrrrrrr");
+    var_dump("no er");
     if (isset($_SESSION['error'])) {
         $error = $_SESSION['error'];
         unset($_SESSION['error']);
