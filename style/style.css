@@ -29,7 +29,7 @@ h1 {
 }
 
 .active{
-    border-bottom: #eda6a6 2px dashed !important; /*#bf5800 */
+    border-bottom: #bf5800 2px dashed !important; /*#eda6a6 */
     background-color: #f4f4f4 !important;
     border-radius: 6px;
 }
