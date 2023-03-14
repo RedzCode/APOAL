@@ -25,9 +25,7 @@ if ($request_method === 'POST') {
 
             SendEmail::SendMailConfirmation($mail1, $content1);
             SendEmail::SendMailConfirmation($mail2, $content2);
-            /*    echo $content1;
-            echo '</br>';
-            echo $content2;*/
+
             echo "<script>alert('Un mail de confirmation a été envoyé aux 2 joueurs')</script>";
         }
     }
@@ -54,7 +52,7 @@ require_once("../includes/head.php") ?>
                 <select name="mail1" id="mail1" required>
                     <option value="">--- Choisi un email ---</option>
                     <?php foreach ($emails as $email) { ?>
-                    <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
+                        <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
                     <?php }; ?>
                 </select>
 
@@ -62,7 +60,7 @@ require_once("../includes/head.php") ?>
                 <select name="mail2" id="mail2" required>
                     <option value="">--- Choisi un email ---</option>
                     <?php foreach ($emails as $email) { ?>
-                    <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
+                        <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
                     <?php }; ?>
                 </select>
                 <input type="submit" value="Valider" id="btn-exchange" disabled>

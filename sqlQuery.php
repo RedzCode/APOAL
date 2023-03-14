@@ -153,31 +153,48 @@ function getAllEmails($pdo)
     return $stmt;
 }
 
-function saveExchange($pdo, $num)
+function saveExchange($pdo, $num, $mail1, $mail2)
 {
-    $emails = getEmailsPlayers($pdo, $num)->fetchAll();
+
     $query = "INSERT INTO `doneexchange` (`mail1`, `mail2`) VALUES (:mail1,:mail2) ";
 
     $stmt = $pdo->prepare($query);
-    $stmt->bindValue(':mail1', $emails[0]['mail1']);
-    $stmt->bindValue(':mail2', $emails[0]['mail2']);
+    $stmt->bindValue(':mail1', $mail1);
+    $stmt->bindValue(':mail2', $mail2);
     $stmt->execute();
 
     return $stmt;
 }
 
-function deleteExchange($pdo, $num)
+function deleteExchange($pdo, $num, $mail1, $mail2)
 {
-    $stmt = saveExchange($pdo, $num);
+    $stmt = saveExchange($pdo, $num, $mail1, $mail2);
     if ($stmt) {
-        $query = "DELETE FROM `ongoingexchange` WHERE numExchange = :num";
+        $stmt1 = updatePlayersInfos($pdo, $mail1, $mail2);
+        $stmt2 = updatePlayersInfos($pdo, $mail2, $mail1);
+        if ($stmt1 and $stmt2) {
+            $query = "DELETE FROM `ongoingexchange` WHERE numExchange = :num";
 
-        $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':num', $num);
-        $stmt->execute();
+            $stmt = $pdo->prepare($query);
+            $stmt->bindValue(':num', $num);
+            $stmt->execute();
+        }
     }
 
     return $stmt;
+}
+
+function updatePlayersInfos($pdo, $emailPlayer, $emailOpponent)
+{
+
+    $query = "UPDATE player SET CountExchange = CountExchange + 1, LastExchangeMail = :emailOpponent  WHERE Email= :emailPlayer";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':emailOpponent', $emailOpponent);
+    $stmt->bindValue(':emailPlayer', $emailPlayer);
+    $success = $stmt->execute();
+
+    return $success;
 }
 
 function getAllDoneExchange($pdo)

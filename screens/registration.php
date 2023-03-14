@@ -34,7 +34,7 @@ require_once("../includes/head.php") ?>
     <?php require("../includes/navigation.php") ?>
     <div class="container">
 
-        <h1 class="pb-2">Inscription</h1>
+        <h1 class="pb-2">Inscription APOAL</h1>
         <section>
             <div class="wrapper-sect">
                 <form action="" method="POST">

@@ -33,7 +33,7 @@ if ($request_method === 'GET') {
                     $mail2 = $res[0]['mail2'];
                     $stmt = exchangeNumber($pdo, $mail1, $mail2);
                     //wait exchange has been successful
-                    $stmt = deleteExchange($pdo, $numExchange);
+                    $stmt = deleteExchange($pdo, $numExchange, $mail1, $mail2);
                     $texte = "Vos numéros ont été échangé! Que la chance soit avec vous !";
                     //mail confirmation ech ?
                 } else {
