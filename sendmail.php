@@ -10,10 +10,13 @@ class SendEmail
         $email->setFrom("poulpyshow@ensc.fr", "PoulpyShow");
         $email->setSubject("\u{1F441} APOAL - Confirmation échange"); //1F441 => eye && 1F419 => octopus
         $email->addTo($to);
-        $email->addContent("text/plain", "SALUT JOUEUR" . $content);
         $email->addContent(
             "text/html",
-            "<strong>HTML</strong>" . "<p>" . $content . "</p>"
+            "<p>Ici la voix...</p>" .
+                "<p>Bidule aimerait faire un échange avec toi</p>" .
+                '<button type="submit"><a href="' . $content . '">Clique ici pour valider l échange</a></button>' . '
+    <p><strong>Si le bouton ne marche pas clique sur le lien qui suit :</strong></p>' .
+                '<p>' . $content . '</p>'
         );
 
         $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));

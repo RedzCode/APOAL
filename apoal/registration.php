@@ -11,9 +11,6 @@ if ($request_method === 'POST') {
         $email = $_POST['email'];
 
         $emails = getAllEmails($pdo)->fetchAll();
-        /*  var_dump($email);
-        var_dump($emails);
-        var_dump(in_array($email, $emails));*/
 
         $identique = false;
         foreach ($emails as $emailTaken) {
