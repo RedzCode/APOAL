@@ -30,7 +30,7 @@ h1 {
 
 .active{
     border-bottom: #eda6a6 2px dashed !important; /*#bf5800 */
-    background-color: #fff6ed !important;
+    background-color: #f4f4f4 !important;
     border-radius: 6px;
 }
 
