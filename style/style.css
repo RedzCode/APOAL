@@ -27,3 +27,7 @@ h1 {
     padding-right: 5% !important;
     padding-left: 5% !important;
 }
+
+.active{
+    border-bottom: #ffd240 1px thick double !important;
+}
