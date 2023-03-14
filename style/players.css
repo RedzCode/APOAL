@@ -40,6 +40,10 @@
     li{
         border-bottom: lightgrey 1px solid;
     }
+
+    .active{
+        border-radius: 15px;
+    }
 }
 
 

@@ -29,5 +29,14 @@ h1 {
 }
 
 .active{
-    border-bottom: #ffd240 1px thick double !important;
+    border-bottom: #eda6a6 2px dashed !important; /*#bf5800 */
+    background-color: #fff6ed !important;
+    border-radius: 6px;
 }
+
+/*
+    border-bottom: #bf5800 2px dashed !important;
+    background-color: #f0ebe7;
+    border-radius: 6px;
+}
+*/
