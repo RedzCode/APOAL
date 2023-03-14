@@ -1,7 +1,7 @@
 <?php
 require(__DIR__ . '/vendor/autoload.php');
 require_once('settings/connexion.php');
-require __DIR__ . 'sqlQuery.php';
+require('sqlQuery.php');
 //header("Location: apoal/players.php");
 ?>
 
