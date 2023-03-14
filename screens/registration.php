@@ -1,7 +1,7 @@
 <?php
 require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
-$error = "";
+session_start();
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'POST') {
     if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['email'])) {
@@ -23,6 +23,16 @@ if ($request_method === 'POST') {
         }
     } else {
         $error = "Vous n'avez pas rempli tout les champs";
+    }
+
+    // place variables to sessions
+    $_SESSION['error'] = $error;
+    header("Location: registration.php", true, 303);
+    exit();
+} elseif ($request_method === 'GET') {
+    if (isset($_SESSION['error'])) {
+        $error = $_SESSION['error'];
+        unset($_SESSION['error']);
     }
 }
 ?>
