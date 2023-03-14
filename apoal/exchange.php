@@ -26,9 +26,9 @@ if ($request_method === 'POST') {
                 $num = $resnum[sizeof($resnum) - 1]['numExchange'];
                 $numCrypted = password_hash($num, PASSWORD_BCRYPT);
 
-                $content1 = 'Confirmez vous l echange ? Cliquez sur ce lien: https://www.poulpy-show.com/screens/validation.php?num='
+                $content1 = 'Confirmez vous l echange ? Cliquez sur ce lien: https://www.poulpy-show.com/apoal/validation.php?num='
                     . $numCrypted . '-' . $num . '&code=' . $code1;
-                $content2 = 'Confirmez vous l echange ? Cliquez sur ce lien: https://www.poulpy-show.com/screens/validation.php?num='
+                $content2 = 'Confirmez vous l echange ? Cliquez sur ce lien: https://www.poulpy-show.com/apoal/validation.php?num='
                     . $numCrypted . '-' . $num . '&code=' . $code2;
 
                 SendEmail::SendMailConfirmation($mail1, $content1);
