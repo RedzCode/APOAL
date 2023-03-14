@@ -57,16 +57,18 @@ require_once("../includes/head.php") ?>
 
 <body>
     <?php require("../includes/navigation.php") ?>
-    <h1>Validation échange</h1>
-    <section class="container">
-        <div class='wrapper-sect'>
-            <?= $texte ?>
-        </div>
+    <div class="container">
+        <h1>Validation échange</h1>
+        <section class="container">
+            <div class='wrapper-sect'>
+                <?= $texte ?>
+            </div>
+        </section>
         <?php if (!empty($success) && $success) { ?>
             <div style="text-align: center; margin-top: 2%;"> <img class="img-gif" src="../assets/deal.gif" alt="meme-gif-Deal-or-not-deal">
             </div>
         <?php } ?>
-    </section>
+    </div>
     <?php require("../includes/footer.php") ?>
 </body>
 
