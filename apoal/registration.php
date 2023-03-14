@@ -13,6 +13,7 @@ if ($request_method === 'POST') {
         $emails = getAllEmails($pdo)->fetchAll();
         var_dump($email);
         var_dump($emails);
+        var_dump(in_array($email, $emails));
         /* if (in_array($email, $emails)) {
             $error = "L'email " . $email . " est déjà utilisé";
         } else if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
