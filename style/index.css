@@ -3,11 +3,9 @@
   height: auto;
 }
 
-
 #banniere-mobile{
   display: none;
 }
-
 
 
 .calendar {
@@ -36,7 +34,6 @@
   background: #fff1f8;
 }
 
-// Place on Timeline
 .start-10 {
   grid-row-start: 2;
 }
@@ -73,8 +70,6 @@
   grid-row-end: 9;
 }
 
-// Event
-
 .title {
   font-weight: 600;
   margin-bottom: 0.25rem;
@@ -92,8 +87,6 @@
 .date {
   height: 60px
 }
-
-// Global / Etc
 
 body {
   font-family: system-ui, sans-serif;
