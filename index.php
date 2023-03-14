@@ -27,7 +27,9 @@ require('sqlQuery.php');
 
 <body>
     <div class="container">
-        <div></div>
+        <div class="banniere">
+            <a href="apoal/registration.php"><img src="/assets/banniere.PNG" alt="banniere"></a>
+        </div>
         <div class="calendar">
             <div class="timeline">
                 <div class="spacer"></div>
