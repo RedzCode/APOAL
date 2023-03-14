@@ -67,11 +67,13 @@ require_once("../includes/head.php") ?>
                 <form action="" method="POST">
                     <div class="mb-3">
                         <label for="prenom" class="form-label">Prenom</label>
-                        <input type="text" class="form-control" id="prenom-register" name="prenom" required>
+                        <input type="text" class="form-control" id="prenom-register" name="prenom"
+                            value="<?php echo isset($_POST['prenom']) ? $_POST['prenom'] : '' ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="nom" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="nom-register" name="nom" required>
+                        <input type="text" class="form-control" id="nom-register" name="nom"
+                            value="<?php echo isset($_POST['nom']) ? $_POST['nom'] : '' ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email ENSC</label>

@@ -5,7 +5,7 @@ require __DIR__ . '/../sqlQuery.php';
 $texte = "Cet échange n'existe pas!";
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'GET') {
-    if (!empty($_GET['num']) and !empty($_GET['code'])) { //verify secret code
+    if (!empty($_GET['num']) and !empty($_GET['code'])) {
         $num = $_GET['num'];
         $index = strrpos($num, '-', 0);
         $numExchange = substr($num, $index + 1);
@@ -32,10 +32,9 @@ if ($request_method === 'GET') {
                     $mail1 = $res[0]['mail1'];
                     $mail2 = $res[0]['mail2'];
                     $stmt = exchangeNumber($pdo, $mail1, $mail2);
-                    //wait exchange has been successful
+
                     $stmt = deleteExchange($pdo, $numExchange, $mail1, $mail2);
                     $texte = "Vos numéros ont été échangé! Que la chance soit avec vous !";
-                    //mail confirmation ech ?
                 } else {
                     $texte = "Merci d'avoir validé ! Echange en cours... En attente de votre partenaire";
                 }
