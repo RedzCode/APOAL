@@ -1,7 +1,7 @@
 <?php
 function getAllPlayers($pdo)
 {
-    $query = "SELECT * FROM player";
+    $query = "SELECT * FROM player ORDER BY NumBox ASC";
 
     $stmt = $pdo->prepare($query);
     $stmt->execute();

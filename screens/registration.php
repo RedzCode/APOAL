@@ -1,7 +1,7 @@
 <?php
 require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
-
+$error = "";
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'POST') {
     if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['email'])) {
@@ -18,7 +18,11 @@ if ($request_method === 'POST') {
             if ($domain == "ensc.fr") {
                 createPlayer($pdo, $name, $famName, $email);
             }
+        } else {
+            $error = "L'email doit être un mail ensc.fr";
         }
+    } else {
+        $error = "Vous n'avez pas rempli tout les champs";
     }
 }
 ?>
@@ -37,6 +41,12 @@ require_once("../includes/head.php") ?>
         <h1 class="pb-2">Inscription APOAL</h1>
         <section>
             <div class="wrapper-sect">
+                <?php if (!empty($error) && $error != "") { ?>
+                    <div class="alert alert-danger">
+                        <strong>Erreur !</strong>
+                        <?= $error ?>
+                    </div>
+                <?php } ?>
                 <form action="" method="POST">
                     <div class="mb-3">
                         <label for="nom" class="form-label">Nom</label>
