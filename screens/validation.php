@@ -3,6 +3,7 @@ require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
 
 $texte = "Cet échange n'existe pas!";
+$success = false;
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'GET') {
     if (!empty($_GET['num']) and !empty($_GET['code'])) {
@@ -35,6 +36,7 @@ if ($request_method === 'GET') {
 
                     $stmt = deleteExchange($pdo, $numExchange, $mail1, $mail2);
                     $texte = "Vos numéros ont été échangé! Que la chance soit avec vous !";
+                    $success = true;
                 } else {
                     $texte = "Merci d'avoir validé ! Echange en cours... En attente de votre partenaire";
                 }
@@ -57,9 +59,13 @@ require_once("../includes/head.php") ?>
     <?php require("../includes/navigation.php") ?>
     <h1>Validation échange</h1>
     <section class="container">
-        <div class='wrapper-form'>
+        <div class='wrapper-sect'>
             <?= $texte ?>
         </div>
+        <?php if (!empty($success) && $success) { ?>
+            <div style="text-align: center; margin-top: 2%;"> <img class="img-gif" src="../assets/deal.gif" alt="meme-gif-Deal-or-not-deal">
+            </div>
+        <?php } ?>
     </section>
     <?php require("../includes/footer.php") ?>
 </body>

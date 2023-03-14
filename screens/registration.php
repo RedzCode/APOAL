@@ -59,10 +59,10 @@ require_once("../includes/head.php") ?>
         <section>
             <div class="wrapper-sect">
                 <?php if (!empty($error) && $error != "") { ?>
-                    <div class="alert alert-danger">
-                        <strong>Erreur !</strong>
-                        <?= $error ?>
-                    </div>
+                <div class="alert alert-danger">
+                    <strong>Erreur !</strong>
+                    <?= $error ?>
+                </div>
                 <?php } ?>
                 <form action="" method="POST">
                     <div class="mb-3">
@@ -82,7 +82,8 @@ require_once("../includes/head.php") ?>
             </div>
         </section>
 
-        <div style="text-align: center; margin-top: 2%;"> <img class="img-gif" src="../assets/registration_player.gif" alt="meme-gif-Deal">
+        <div style="text-align: center; margin-top: 2%;"> <img class="img-gif" src="../assets/registration_player.gif"
+                alt="meme-gif-Deal">
         </div>
 
     </div>
