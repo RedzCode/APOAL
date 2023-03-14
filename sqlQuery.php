@@ -169,7 +169,7 @@ function saveExchange($pdo, $mail1, $mail2, $numero1, $numero2)
 function deleteExchange($pdo, $numExchange, $mail1, $mail2, $date)
 {
     $numero1 = (getNumBox($pdo, $mail2)->fetch())[0];
-    $numero2 = (getNumBox($pdo, $mail1))[0];
+    $numero2 = (getNumBox($pdo, $mail1)->fetch())[0];
     $stmt = saveExchange($pdo, $mail1, $mail2, $date, $numero1, $numero2);
     if ($stmt) {
         $stmt1 = updatePlayersInfos($pdo, $mail1, $mail2);
