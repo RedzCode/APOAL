@@ -11,8 +11,9 @@ if ($request_method === 'POST') {
         $email = $_POST['email'];
 
         $emails = getAllEmails($pdo)->fetchAll();
-
-        if (in_array($email, $emails)) {
+        var_dump($email);
+        var_dump($emails);
+        /* if (in_array($email, $emails)) {
             $error = "L'email " . $email . " est déjà utilisé";
         } else if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Separate string by @ characters (there should be only one)
@@ -29,15 +30,15 @@ if ($request_method === 'POST') {
             }
         } else {
             $error = "L'email n'est pas dans un format correct ex: email@ensc.fr";
-        }
+        }*/
     } else {
         $error = "Vous n'avez pas rempli tout les champs";
     }
 
-    $_SESSION['error'] = $error;
+    /* $_SESSION['error'] = $error;
     $_SESSION['success'] = $success;
     header("Location: registration.php", true, 303);
-    exit();
+    exit();*/
 } elseif ($request_method === 'GET') {
     if (isset($_SESSION['error'])) {
         $error = $_SESSION['error'];
@@ -65,16 +66,16 @@ require_once("../includes/head.php") ?>
         <section>
             <div class="wrapper-sect">
                 <?php if (!empty($error) && $error != "") { ?>
-                <div class="alert alert-danger">
-                    <strong>Erreur !</strong>
-                    <?= $error ?>
-                </div>
+                    <div class="alert alert-danger">
+                        <strong>Erreur !</strong>
+                        <?= $error ?>
+                    </div>
                 <?php } ?>
                 <?php if (!empty($success) && $success != "") { ?>
-                <div class="alert alert-success">
-                    <strong>Génial !</strong>
-                    <?= $success ?>
-                </div>
+                    <div class="alert alert-success">
+                        <strong>Génial !</strong>
+                        <?= $success ?>
+                    </div>
                 <?php } ?>
                 <form action="" method="POST">
                     <div class="mb-3">
@@ -94,8 +95,7 @@ require_once("../includes/head.php") ?>
             </div>
         </section>
 
-        <div style="text-align: center; margin-top: 2%;"> <img class="img-gif" src="../assets/registration_player.gif"
-                alt="meme-gif-Deal">
+        <div style="text-align: center; margin-top: 2%;"> <img class="img-gif" src="../assets/registration_player.gif" alt="meme-gif-Deal">
         </div>
 
     </div>
