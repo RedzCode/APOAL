@@ -14,7 +14,7 @@ class SendEmail
             "text/html",
             "<p>Ici la voix...</p>" .
                 "<p>" . $opponent . " aimerait faire un échange avec toi</p>" .
-                '<button style="background-color: #008CBA; border-radius: 4px;" type="submit"><a href="' . $content . '">Clique ici pour valider l échange</a></button>' . '
+                '<button style="background-color: #ffd240; border-radius: 4px; color: black;" type="submit"><a href="' . $content . '"><strong>Clique ici pour valider l échange</strong></a></button>' . '
     <p><strong>Si le bouton ne marche pas clique sur le lien qui suit :</strong></p>' .
                 '<p>' . $content . '</p>'
         );
