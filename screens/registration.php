@@ -82,7 +82,7 @@ require_once("../includes/head.php") ?>
             </div>
         </section>
 
-        <div style="text-align: center; margin-top: 2%;"> <img src="../assets/deal.gif" alt="meme-gif-Deal">
+        <div style="text-align: center; margin-top: 2%;"> <img class="img-gif" src="../assets/registration_player.gif" alt="meme-gif-Deal">
         </div>
 
     </div>

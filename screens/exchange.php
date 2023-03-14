@@ -70,17 +70,17 @@ require_once("../includes/head.php") ?>
         <section>
             <div class="wrapper-sect">
                 <?php if (!empty($error) && $error != "") { ?>
-                    <div class="alert alert-danger">
-                        <strong>Erreur !</strong>
-                        <?= $error ?>
-                    </div>
+                <div class="alert alert-danger">
+                    <strong>Erreur !</strong>
+                    <?= $error ?>
+                </div>
                 <?php } ?>
                 <form method="post" action="">
                     <label for="mail1">Email joueur 1</label>
                     <select name="mail1" id="mail1" required>
                         <option value="">--- Choisi un email ---</option>
                         <?php foreach ($emails as $email) { ?>
-                            <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
+                        <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
                         <?php }; ?>
                     </select>
 
@@ -88,7 +88,7 @@ require_once("../includes/head.php") ?>
                     <select name="mail2" id="mail2" required>
                         <option value="">--- Choisi un email ---</option>
                         <?php foreach ($emails as $email) { ?>
-                            <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
+                        <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
                         <?php }; ?>
                     </select>
                     <input type="submit" value="Valider" id="btn-exchange" disabled>
@@ -96,7 +96,8 @@ require_once("../includes/head.php") ?>
             </div>
         </section>
 
-        <div style="text-align: center; margin-top: 2%;"> <img src="../assets/registration_player.gif" alt="meme-gif-Deal-or-not-deal">
+        <div style="text-align: center; margin-top: 2%;"> <img class="img-gif" src="../assets/deal.gif"
+                alt="meme-gif-Deal-or-not-deal">
         </div>
 
     </div>
