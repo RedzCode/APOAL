@@ -14,14 +14,14 @@ if ($request_method === 'POST') {
         /*  var_dump($email);
         var_dump($emails);
         var_dump(in_array($email, $emails));*/
-
+        var_dump($emails);
         $identique = false;
         foreach ($emails as $emailTaken) {
             if (strtolower($email) == strtolower($emailTaken)) {
                 $identique = true;
             }
         }
-        if ($identique) {
+        /* if ($identique) {
             $error = "L'email " . $email . " est déjà utilisé";
         } else if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Separate string by @ characters (there should be only one)
@@ -38,15 +38,15 @@ if ($request_method === 'POST') {
             }
         } else {
             $error = "L'email n'est pas dans un format correct ex: email@ensc.fr";
-        }
+        }*/
     } else {
         $error = "Vous n'avez pas rempli tout les champs";
     }
 
-    $_SESSION['error'] = $error;
+    /*  $_SESSION['error'] = $error;
     $_SESSION['success'] = $success;
     header("Location: registration.php", true, 303);
-    exit();
+    exit();*/
 } elseif ($request_method === 'GET') {
     if (isset($_SESSION['error'])) {
         $error = $_SESSION['error'];
