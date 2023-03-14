@@ -34,7 +34,7 @@ if ($request_method === 'GET') {
                     $mail2 = $res[0]['mail2'];
                     $stmt = exchangeNumber($pdo, $mail1, $mail2);
 
-                    $date = date("Y-m-d h:i:sa", $d);
+                    $date = date("Y-m-d h:i:sa", date('d-m-y h:i:s'));
                     $stmt = deleteExchange($pdo, $numExchange, $mail1, $mail2, $date);
                     $texte = "Vos numéros ont été échangé! Que la chance soit avec vous !";
                     $success = true;
