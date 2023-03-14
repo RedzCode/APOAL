@@ -6,7 +6,7 @@ require __DIR__ . '/../sqlQuery.php';
 session_start();
 
 $emails = getAllEmails($pdo)->fetchAll();
-
+$success = "";
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'POST') {
     if (!empty($_POST['mail1']) and !empty($_POST['mail2'])) {
@@ -34,7 +34,7 @@ if ($request_method === 'POST') {
                 SendEmail::SendMailConfirmation($mail1, $content1);
                 SendEmail::SendMailConfirmation($mail2, $content2);
 
-                echo "<script>alert('Un mail de confirmation a été envoyé aux 2 joueurs')</script>";
+                $success = "Un mail a été envoyé aux 2 joueurs";
             } else {
                 $error = "Impossible d'échanger vos numéros... Contactez nous soit sur le mail PoulpyShow@ensc.fr, soit le messenger poulpyshow, soit en personne";
             }
@@ -73,6 +73,12 @@ require_once("../includes/head.php") ?>
                     <div class="alert alert-danger">
                         <strong>Erreur !</strong>
                         <?= $error ?>
+                    </div>
+                <?php } ?>
+                <?php if (!empty($success) && $success != "") { ?>
+                    <div class="alert alert-success">
+                        <strong>Génial !</strong>
+                        <?= $success ?>
                     </div>
                 <?php } ?>
                 <form method="post" action="">
