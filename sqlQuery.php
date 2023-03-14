@@ -153,7 +153,7 @@ function getAllEmails($pdo)
     return $stmt;
 }
 
-function saveExchange($pdo, $num, $mail1, $mail2)
+function saveExchange($pdo, $mail1, $mail2, $numero1, $numero2)
 {
 
     $query = "INSERT INTO `doneexchange` (`mail1`, `mail2`) VALUES (:mail1,:mail2) ";
@@ -166,17 +166,19 @@ function saveExchange($pdo, $num, $mail1, $mail2)
     return $stmt;
 }
 
-function deleteExchange($pdo, $num, $mail1, $mail2)
+function deleteExchange($pdo, $numExchange, $mail1, $mail2, $date)
 {
-    $stmt = saveExchange($pdo, $num, $mail1, $mail2);
+    $numero1 = (getNumBox($pdo, $mail2)->fetch())[0];
+    $numero2 = (getNumBox($pdo, $mail1))[0];
+    $stmt = saveExchange($pdo, $mail1, $mail2, $date, $numero1, $numero2);
     if ($stmt) {
         $stmt1 = updatePlayersInfos($pdo, $mail1, $mail2);
         $stmt2 = updatePlayersInfos($pdo, $mail2, $mail1);
         if ($stmt1 and $stmt2) {
-            $query = "DELETE FROM `ongoingexchange` WHERE numExchange = :num";
+            $query = "DELETE FROM `ongoingexchange` WHERE numExchange = :numExchange";
 
             $stmt = $pdo->prepare($query);
-            $stmt->bindValue(':num', $num);
+            $stmt->bindValue(':numExchange', $numExchange);
             $stmt->execute();
         }
     }
