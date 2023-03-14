@@ -31,8 +31,10 @@ if ($request_method === 'POST') {
                 $content2 = 'https://www.poulpy-show.com/apoal/validation.php?num='
                     . $numCrypted . '-' . $num . '&code=' . $code2;
 
-                SendEmail::SendMailConfirmation($mail1, $content1);
-                SendEmail::SendMailConfirmation($mail2, $content2);
+                $opponent1 = getNamePlayer($pdo, $mail2)->fetch();
+                $opponent2 = getNamePlayer($pdo, $mail1)->fetch();
+                SendEmail::SendMailConfirmation($mail1, $opponent1['Name'] . " " . $opponent1['FamilyName'], $content1);
+                SendEmail::SendMailConfirmation($mail2, $opponent2['Name'] . " " . $opponent2['FamilyName'], $content2);
 
                 $success = "Un mail a été envoyé aux 2 joueurs";
             } else {

@@ -9,6 +9,17 @@ function getAllPlayers($pdo)
     return $stmt;
 }
 
+function getNamePlayer($pdo, $email)
+{
+    $query = "SELECT Name, FamilyName FROM player where Email=:email ";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':email', $email);
+    $stmt->execute();
+
+    return $stmt;
+}
+
 function createPlayer($pdo, $name, $familyName, $email)
 {
     $numbox = getNextNumBox($pdo);

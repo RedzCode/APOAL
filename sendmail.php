@@ -4,7 +4,7 @@ require(__DIR__ . '/vendor/autoload.php');
 
 class SendEmail
 {
-    public static function SendMailConfirmation($to, $content)
+    public static function SendMailConfirmation($to, $opponent, $content)
     {
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom("poulpyshow@ensc.fr", "PoulpyShow");
@@ -13,7 +13,7 @@ class SendEmail
         $email->addContent(
             "text/html",
             "<p>Ici la voix...</p>" .
-                "<p>Bidule aimerait faire un échange avec toi</p>" .
+                "<p>" . $opponent . " aimerait faire un échange avec toi</p>" .
                 '<button type="submit"><a href="' . $content . '">Clique ici pour valider l échange</a></button>' . '
     <p><strong>Si le bouton ne marche pas clique sur le lien qui suit :</strong></p>' .
                 '<p>' . $content . '</p>'
