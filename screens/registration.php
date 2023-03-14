@@ -30,6 +30,7 @@ if ($request_method === 'POST') {
     header("Location: registration.php", true, 303);
     exit();
 } elseif ($request_method === 'GET') {
+    var_dump("errrrrrrr");
     if (isset($_SESSION['error'])) {
         $error = $_SESSION['error'];
         unset($_SESSION['error']);
