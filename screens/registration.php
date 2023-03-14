@@ -59,21 +59,19 @@ require_once("../includes/head.php") ?>
         <section>
             <div class="wrapper-sect">
                 <?php if (!empty($error) && $error != "") { ?>
-                <div class="alert alert-danger">
-                    <strong>Erreur !</strong>
-                    <?= $error ?>
-                </div>
+                    <div class="alert alert-danger">
+                        <strong>Erreur !</strong>
+                        <?= $error ?>
+                    </div>
                 <?php } ?>
                 <form action="" method="POST">
                     <div class="mb-3">
                         <label for="prenom" class="form-label">Prenom</label>
-                        <input type="text" class="form-control" id="prenom-register" name="prenom"
-                            value="<?php echo isset($_POST['prenom']) ? $_POST['prenom'] : '' ?>" required>
+                        <input type="text" class="form-control" id="prenom-register" name="prenom" required>
                     </div>
                     <div class="mb-3">
                         <label for="nom" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="nom-register" name="nom"
-                            value="<?php echo isset($_POST['nom']) ? $_POST['nom'] : '' ?>" required>
+                        <input type="text" class="form-control" id="nom-register" name="nom" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email ENSC</label>
@@ -84,8 +82,7 @@ require_once("../includes/head.php") ?>
             </div>
         </section>
 
-        <div style="text-align: center; margin-top: 2%;"> <img src="../assets/registration_player.gif"
-                alt="meme-gif-Deal-or-not-deal">
+        <div style="text-align: center; margin-top: 2%;"> <img src="../assets/deal.gif" alt="meme-gif-Deal">
         </div>
 
     </div>

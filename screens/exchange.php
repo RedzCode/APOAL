@@ -65,36 +65,41 @@ require_once("../includes/head.php") ?>
 
 <body>
     <?php require("../includes/navigation.php") ?>
-    <!-- <h1>Echange entre joueurs</h1> -->
-    <section class="container">
-        <div class='wrapper-form'>
-            <?php if (!empty($error) && $error != "") { ?>
-                <div class="alert alert-danger">
-                    <strong>Erreur !</strong>
-                    <?= $error ?>
-                </div>
-            <?php } ?>
-            <form method="post" action="">
+    <div class="container">
+        <h1 class="pb-2">Echange numéros boites</h1>
+        <section>
+            <div class="wrapper-sect">
+                <?php if (!empty($error) && $error != "") { ?>
+                    <div class="alert alert-danger">
+                        <strong>Erreur !</strong>
+                        <?= $error ?>
+                    </div>
+                <?php } ?>
+                <form method="post" action="">
+                    <label for="mail1">Email joueur 1</label>
+                    <select name="mail1" id="mail1" required>
+                        <option value="">--- Choisi un email ---</option>
+                        <?php foreach ($emails as $email) { ?>
+                            <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
+                        <?php }; ?>
+                    </select>
 
-                <label for="mail1">Email joueur 1</label>
-                <select name="mail1" id="mail1" required>
-                    <option value="">--- Choisi un email ---</option>
-                    <?php foreach ($emails as $email) { ?>
-                        <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
-                    <?php }; ?>
-                </select>
+                    <label for="mail2">Email joueur 2</label>
+                    <select name="mail2" id="mail2" required>
+                        <option value="">--- Choisi un email ---</option>
+                        <?php foreach ($emails as $email) { ?>
+                            <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
+                        <?php }; ?>
+                    </select>
+                    <input type="submit" value="Valider" id="btn-exchange" disabled>
+                </form>
+            </div>
+        </section>
 
-                <label for="mail2">Email joueur 2</label>
-                <select name="mail2" id="mail2" required>
-                    <option value="">--- Choisi un email ---</option>
-                    <?php foreach ($emails as $email) { ?>
-                        <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
-                    <?php }; ?>
-                </select>
-                <input type="submit" value="Valider" id="btn-exchange" disabled>
-            </form>
+        <div style="text-align: center; margin-top: 2%;"> <img src="../assets/registration_player.gif" alt="meme-gif-Deal-or-not-deal">
         </div>
-    </section>
+
+    </div>
     <?php require("../includes/footer.php") ?>
 </body>
 <script src="../js/exchange.js"></script>

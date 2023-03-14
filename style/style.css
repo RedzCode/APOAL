@@ -30,14 +30,10 @@ section {
     padding: 3%;
 }
 
-.wrapper-form {
-    background-color: #ffd240 !important;
-    padding: 3%;
-}
-
 .wrapper-sect {
     background-color: #ffd240 !important;
-    padding: 3%;
+    border-radius: 5px;
+    padding: 20px;
 }
 
 h1 {
