@@ -2,13 +2,19 @@
 require_once('../settings/connexion.php');
 require __DIR__ . '/../sqlQuery.php';
 session_start();
+
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'POST') {
     if (!empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['email'])) {
         $name = $_POST['prenom'];
         $famName = $_POST['nom'];
         $email = $_POST['email'];
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+        $emails = getAllEmails($pdo)->fetchAll();
+
+        if (in_array($email, $emails)) {
+            $error = "L'email " . $email . " est déjà utilisé";
+        } else if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Separate string by @ characters (there should be only one)
             $parts = explode('@', $email);
 
@@ -27,17 +33,13 @@ if ($request_method === 'POST') {
         $error = "Vous n'avez pas rempli tout les champs";
     }
 
-    var_dump($error);
-    // place variables to sessions
     $_SESSION['error'] = $error;
     header("Location: registration.php", true, 303);
     exit();
 } elseif ($request_method === 'GET') {
-    var_dump("no er");
     if (isset($_SESSION['error'])) {
         $error = $_SESSION['error'];
         unset($_SESSION['error']);
-        var_dump("errrrrrrr");
     }
 }
 ?>
