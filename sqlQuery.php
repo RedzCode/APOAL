@@ -206,3 +206,14 @@ function getAllDoneExchange($pdo)
 
     return $stmt;
 }
+
+function getLastExchangePlayer($pdo, $emailPlayer)
+{
+    $query = "SELECT LastExchangeMail FROM player WHERE Email = :emailPlayer";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':emailPlayer', $emailPlayer);
+    $stmt->execute();
+
+    return $stmt;
+}

@@ -13,20 +13,27 @@ if ($request_method === 'POST') {
         $code1 = random_int(0, 499);
         $code2 = random_int(500, 1000);
 
-        if (createExchange($pdo, $mail1, $mail2, $code1, $code2)) {
-            $resnum = getNumExchange($pdo, $mail1, $mail2)->fetchAll();
-            $num = $resnum[sizeof($resnum) - 1]['numExchange'];
-            $numCrypted = password_hash($num, PASSWORD_BCRYPT);
+        $lastExchangePlayer1 = (getLastExchangePlayer($pdo, $mail1)->fetch())[0];
+        $lastExchangePlayer2 = (getLastExchangePlayer($pdo, $mail2)->fetch())[0];
 
-            $content1 = 'Confirmez vous l echange ? Cliquez sur ce lien: https://www.poulpy-show.com/screens/validation.php?num='
-                . $numCrypted . '-' . $num . '&code=' . $code1;
-            $content2 = 'Confirmez vous l echange ? Cliquez sur ce lien: https://www.poulpy-show.com/screens/validation.php?num='
-                . $numCrypted . '-' . $num . '&code=' . $code2;
+        if ($lastExchangePlayer1 == $mail2 && $lastExchangePlayer2 == $mail1) {
+            var_dump("Vous avez déjà fait un échange enseemble");
+        } else {
+            if (createExchange($pdo, $mail1, $mail2, $code1, $code2)) {
+                $resnum = getNumExchange($pdo, $mail1, $mail2)->fetchAll();
+                $num = $resnum[sizeof($resnum) - 1]['numExchange'];
+                $numCrypted = password_hash($num, PASSWORD_BCRYPT);
 
-            SendEmail::SendMailConfirmation($mail1, $content1);
-            SendEmail::SendMailConfirmation($mail2, $content2);
+                $content1 = 'Confirmez vous l echange ? Cliquez sur ce lien: https://www.poulpy-show.com/screens/validation.php?num='
+                    . $numCrypted . '-' . $num . '&code=' . $code1;
+                $content2 = 'Confirmez vous l echange ? Cliquez sur ce lien: https://www.poulpy-show.com/screens/validation.php?num='
+                    . $numCrypted . '-' . $num . '&code=' . $code2;
 
-            echo "<script>alert('Un mail de confirmation a été envoyé aux 2 joueurs')</script>";
+                SendEmail::SendMailConfirmation($mail1, $content1);
+                SendEmail::SendMailConfirmation($mail2, $content2);
+
+                echo "<script>alert('Un mail de confirmation a été envoyé aux 2 joueurs')</script>";
+            }
         }
     }
 }
