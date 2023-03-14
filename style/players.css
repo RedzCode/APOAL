@@ -36,6 +36,10 @@
     .logo-apoal{
         height: 70px;
     }
+
+    li{
+        border-bottom: lightgrey 1px solid;
+    }
 }
 
 
