@@ -3,6 +3,11 @@
   height: auto;
 }
 
+.planning-img{
+  width: 100%;
+  height: auto;
+}
+
 #banniere-mobile{
   display: none;
 }
