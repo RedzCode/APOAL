@@ -14,34 +14,32 @@ require_once("../includes/head.php") ?>
 
 <body>
     <?php require("../includes/navigation.php") ?>
-    <h1>Liste des échanges</h1>
-    <section class="container">
-        <div class='wrapper'>
-            <div class='row'>
-                <?php
-                foreach ($exchanges as $exchange) { ?>
-                    <div class='column'>
-                        <div>
-                            échange
-                        </div>
-                    </div>
-                <?php } ?>
+    <div class="container">
+        <h1 class="pb-2">Historique</h1>
+        <section>
+            <div class="table-responsive" id="no-more-tables">
+                <table class="table table-bordered  bg-white  table-striped display" id="player-table"
+                    data-toggle="table" data-locale="fr-FR" data-search="true" data-pagination="true"
+                    data-page-list="[5, 25, 50, 100, all]">
+                    <thead class="bg-dark text-light">
+                        <tr>
+                            <th data-sortable="true">Joueur1</th>
+                            <th data-sortable="true">Joueur2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($exchanges as $exchange) { ?>
+                        <tr>
+                            <td data-title="Joueur 1"> <?= $exchange['mail1'] ?> </td>
+                            <td data-title="Joueur 2"><?= $exchange['mail2'] ?></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
-            </br>
-            <div class='row'>
-                <?php
-                foreach ($exchanges as $exchange) { ?>
-                    <div class='column'>
-                        <div>
-                            <?php echo $exchange['numExchange'] ?> |
-                            <?php echo $exchange['mail1'] ?> |
-                            <?php echo $exchange['mail2'] ?> |
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <?php require("../includes/footer.php") ?>
 </body>
 
