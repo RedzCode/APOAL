@@ -6,7 +6,7 @@ require __DIR__ . '/../sqlQuery.php';
 session_start();
 
 $emails = getAllEmails($pdo)->fetchAll();
-$success = "";
+
 $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
 if ($request_method === 'POST') {
     if (!empty($_POST['mail1']) and !empty($_POST['mail2'])) {
@@ -44,12 +44,17 @@ if ($request_method === 'POST') {
     }
 
     $_SESSION['error'] = $error;
+    $_SESSION['success'] = $success;
     header("Location: exchange.php", true, 303);
     exit();
 } elseif ($request_method === 'GET') {
     if (isset($_SESSION['error'])) {
         $error = $_SESSION['error'];
         unset($_SESSION['error']);
+    }
+    if (isset($_SESSION['success'])) {
+        $success = $_SESSION['success'];
+        unset($_SESSION['success']);
     }
 }
 
