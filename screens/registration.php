@@ -33,6 +33,7 @@ if ($request_method === 'POST') {
     if (isset($_SESSION['error'])) {
         $error = $_SESSION['error'];
         unset($_SESSION['error']);
+        var_dump("errrrrrrr");
     }
 }
 ?>
