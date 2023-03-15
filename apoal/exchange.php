@@ -93,7 +93,7 @@ require_once("../includes/head.php") ?>
                     <div id="myDropdown1" class="dropdown-content">
                         <input type="text" placeholder="Search.." id="myInput1" onkeyup="filterFunction(this)"
                             onkeydown="hideList(this)" required>
-                        <div id="dropdow-hidden1">
+                        <div id="dropdow-hidden1" class="dropdown-hidden">
                             <p onclick="selectMail(this)">About</p>
                             <p onclick="selectMail(this)">Base</p>
                             <p onclick="selectMail(this)">Blog</p>
