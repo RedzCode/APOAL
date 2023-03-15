@@ -145,9 +145,11 @@ function filterFunction(element) {
     }
 
     filter = input.value.toUpperCase();
+    console.log(filter);
     a = div.getElementsByTagName("p");
     for (i = 0; i < a.length; i++) {
         txtValue = a[i].textContent || a[i].innerText;
+        console.log(txtValue);
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
             a[i].style.display = "";
         } else {
