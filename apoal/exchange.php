@@ -131,7 +131,7 @@ require_once("../includes/head.php") ?>
         input = document.getElementById("myInput1");
         input.textContent = element.textContent;
         input.value = element.textContent;
-        filterFunction();
+        filterFunction(element);
     }
 
     function filterFunction(element) {
