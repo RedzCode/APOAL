@@ -128,7 +128,7 @@ require_once("../includes/head.php") ?>
 <script>
     function selectMail(element) {
         var input;
-        input = document.getElementById("myInput");
+        input = document.getElementById("myInput1");
         input.textContent = element.textContent;
         input.value = element.textContent;
         filterFunction();
