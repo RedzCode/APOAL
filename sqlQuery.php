@@ -20,6 +20,18 @@ function getNamePlayer($pdo, $email)
     return $stmt;
 }
 
+function getInfoPlayer($pdo, $email)
+{
+    $query = "SELECT Name, FamilyName, Email, NumBox FROM player where Email=:email ";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':email', $email);
+    $stmt->execute();
+
+    return $stmt;
+}
+
+
 function createPlayer($pdo, $name, $familyName, $email)
 {
     $numbox = getNextNumBox($pdo);

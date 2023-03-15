@@ -60,7 +60,7 @@ if ($request_method === 'POST') {
 <html>
 
 <?php
-$pageTitle = "Joueurs";
+$pageTitle = "Inscription";
 require_once("../includes/head.php") ?>
 
 <body>

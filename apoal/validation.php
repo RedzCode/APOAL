@@ -53,7 +53,7 @@ if ($request_method === 'GET') {
 <html>
 
 <?php
-$pageTitle = "Echange";
+$pageTitle = "Validation";
 require_once("../includes/head.php") ?>
 
 <body>
