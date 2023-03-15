@@ -49,14 +49,14 @@ require_once("../includes/head.php") ?>
         <section>
             <?php if (!empty($texte) and $texte != "") {
             ?>
-                <div class='wrapper-sect'>
-                    <?= $texte ?>
-                </div>
+            <div class='wrapper-sect'>
+                <?= $texte ?>
+            </div>
             <?php } else { ?>
-                <div class='wrapper-sect'>
-                    <p>Le joueur <?= $prenom ?> <?= $nom ?> (<?= $email ?>) a le numéro : </p>
-                    <h2><?= $numéro ?></h2>
-                </div>
+            <div class='wrapper-sect'>
+                <p>Le joueur <?= $prenom ?> <?= $nom ?> (<?= $email ?>) a le numéro : </p>
+                <h2 style="text-align: center;"><?= $numéro ?></h2>
+            </div>
             <?php  } ?>
         </section>
 
