@@ -93,6 +93,9 @@ require_once("../includes/head.php") ?>
                     <div id="myDropdown1" class="dropdown-content">
                         <input type="text" placeholder="Search.." id="myInput1" class="myInput" onkeyup="filterFunction(this)" onclick="toggleList(this)" required>
                         <div id="dropdow-hidden1" class="dropdown-hidden">
+                            <?php foreach ($emails as $email) { ?>
+                                <p onclick="selectMail(this)" class="mails1"><?= $email["email"]  ?></p>
+                            <?php }; ?>
                             <p onclick="selectMail(this)" class="mails1">About</p>
                             <p onclick="selectMail(this)" class="mails1">Base</p>
                             <p onclick="selectMail(this)" class="mails1">Blog</p>
@@ -135,7 +138,7 @@ require_once("../includes/head.php") ?>
         }
         input.textContent = element.textContent;
         input.value = element.textContent;
-        filterFunction(element);
+        filterFunction(input);
     }
 
     function filterFunction(element) {
