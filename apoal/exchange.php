@@ -136,6 +136,7 @@ require_once("../includes/head.php") ?>
 
     function filterFunction(element) {
         var input, filter, ul, li, a, i;
+        console.log(element);
         input = element;
         if (element.id == "myInput1") {
             div = document.getElementById("dropdow-hidden1");
