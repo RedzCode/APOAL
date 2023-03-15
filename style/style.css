@@ -76,6 +76,8 @@ h1 {
   
   .dropdown-hidden{
     display: none;
+    overflow: scroll;
+    max-height: 200px;
   }
 
   .show {display: block;}
