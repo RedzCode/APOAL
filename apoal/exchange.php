@@ -12,34 +12,50 @@ if ($request_method === 'POST') {
     if (!empty($_POST['mail1']) and !empty($_POST['mail2'])) {
         $mail1 = $_POST['mail1'];
         $mail2 = $_POST['mail2'];
-        $code1 = random_int(0, 499);
-        $code2 = random_int(500, 1000);
 
-        $lastExchangePlayer1 = (getLastExchangePlayer($pdo, $mail1)->fetch())[0];
-        $lastExchangePlayer2 = (getLastExchangePlayer($pdo, $mail2)->fetch())[0];
-
-        if ($lastExchangePlayer1 == $mail2 && $lastExchangePlayer2 == $mail1) {
-            $error = "Impossible de faire un échange entre deux même joueurs à la suite. \nAu moins un des joueurs doit faire un échange avec un autre joueur";
-        } else {
-            if (createExchange($pdo, $mail1, $mail2, $code1, $code2)) {
-                $resnum = getNumExchange($pdo, $mail1, $mail2)->fetchAll();
-                $num = $resnum[sizeof($resnum) - 1]['numExchange'];
-                $numCrypted = password_hash($num, PASSWORD_BCRYPT);
-
-                $content1 = 'https://www.poulpy-show.com/apoal/validation.php?num='
-                    . $numCrypted . '-' . $num . '&code=' . $code1;
-                $content2 = 'https://www.poulpy-show.com/apoal/validation.php?num='
-                    . $numCrypted . '-' . $num . '&code=' . $code2;
-
-                $opponent1 = getNamePlayer($pdo, $mail2)->fetch();
-                $opponent2 = getNamePlayer($pdo, $mail1)->fetch();
-                SendEmail::SendMailConfirmation($mail1, $opponent1['Name'] . " " . $opponent1['FamilyName'], $content1);
-                SendEmail::SendMailConfirmation($mail2, $opponent2['Name'] . " " . $opponent2['FamilyName'], $content2);
-
-                $success = "Un mail a été envoyé aux 2 joueurs";
-            } else {
-                $error = "Impossible d'échanger vos numéros... Contactez nous soit sur le mail PoulpyShow@ensc.fr, soit le messenger poulpyshow, soit en personne";
+        $identique1 = false;
+        $identique2 = false;
+        foreach ($emails as $emailTaken) {
+            if (strtolower($mail1) == strtolower($emailTaken[0])) {
+                $identique1 = true;
             }
+            if (strtolower($mail2) == strtolower($emailTaken[0])) {
+                $identique2 = true;
+            }
+        }
+
+        if ($identique1 && $identique2) {
+            $code1 = random_int(0, 499);
+            $code2 = random_int(500, 1000);
+
+            $lastExchangePlayer1 = (getLastExchangePlayer($pdo, $mail1)->fetch())[0];
+            $lastExchangePlayer2 = (getLastExchangePlayer($pdo, $mail2)->fetch())[0];
+
+            if ($lastExchangePlayer1 == $mail2 && $lastExchangePlayer2 == $mail1) {
+                $error = "Impossible de faire un échange entre deux même joueurs à la suite. \nAu moins un des joueurs doit faire un échange avec un autre joueur";
+            } else {
+                if (createExchange($pdo, $mail1, $mail2, $code1, $code2)) {
+                    $resnum = getNumExchange($pdo, $mail1, $mail2)->fetchAll();
+                    $num = $resnum[sizeof($resnum) - 1]['numExchange'];
+                    $numCrypted = password_hash($num, PASSWORD_BCRYPT);
+
+                    $content1 = 'https://www.poulpy-show.com/apoal/validation.php?num='
+                        . $numCrypted . '-' . $num . '&code=' . $code1;
+                    $content2 = 'https://www.poulpy-show.com/apoal/validation.php?num='
+                        . $numCrypted . '-' . $num . '&code=' . $code2;
+
+                    $opponent1 = getNamePlayer($pdo, $mail2)->fetch();
+                    $opponent2 = getNamePlayer($pdo, $mail1)->fetch();
+                    SendEmail::SendMailConfirmation($mail1, $opponent1['Name'] . " " . $opponent1['FamilyName'], $content1);
+                    SendEmail::SendMailConfirmation($mail2, $opponent2['Name'] . " " . $opponent2['FamilyName'], $content2);
+
+                    $success = "Un mail a été envoyé aux 2 joueurs";
+                } else {
+                    $error = "Impossible d'échanger vos numéros... Contactez nous soit sur le mail PoulpyShow@ensc.fr, soit le messenger poulpyshow, soit en personne";
+                }
+            }
+        } else {
+            $error = "L'un des mails n'appartient à aucun des deux joueurs!";
         }
     } else {
         $error = "Vous n'avez pas rempli tout les champs";
@@ -91,7 +107,7 @@ require_once("../includes/head.php") ?>
                 <form method="post" action="">
                     <div><label for="mail1">Email joueur 1</label>
                         <div id="myDropdown1" class="dropdown-content">
-                            <input type="text" name="mail1" placeholder="Search.." id="myInput1" class="myInput" onkeyup="filterFunction(this)" onclick="toggleList(this)" required>
+                            <input type="email" name="mail1" placeholder="Search.." id="myInput1" class="myInput" onkeyup="filterFunction(this)" onclick="toggleList(this)" required>
                             <div id="dropdow-hidden1" class="dropdown-hidden">
                                 <?php foreach ($emails as $email) { ?>
                                     <p onclick="selectMail(this)" class="mails1"><?= $email["email"]  ?></p>
@@ -100,7 +116,7 @@ require_once("../includes/head.php") ?>
                         </div>
                         <label for="mail2">Email joueur 2</label>
                         <div id="myDropdown2" class="dropdown-content">
-                            <input type="text" name="mail2" placeholder="Search.." id="myInput2" class="myInput" onkeyup="filterFunction(this)" onclick="toggleList(this)" required>
+                            <input type="email" name="mail2" placeholder="Search.." id="myInput2" class="myInput" onkeyup="filterFunction(this)" onclick="toggleList(this)" required>
                             <div id="dropdow-hidden2" class="dropdown-hidden">
                                 <?php foreach ($emails as $email) { ?>
                                     <p onclick="selectMail(this)" class="mails2"><?= $email["email"]  ?></p>
