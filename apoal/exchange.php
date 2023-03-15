@@ -161,10 +161,10 @@ function filterFunction(element) {
 function toggleList(element) {
     var input;
     input = element;
-    if (element.id = "myInput1") {
+    if (element.id == "myInput1") {
         div = document.getElementById("dropdow-hidden1");
         div.classList.toggle("show");
-    } else if (element.id = "myInput2") {
+    } else if (element.id == "myInput2") {
         div = document.getElementById("dropdow-hidden2");
         div.classList.toggle("show");
     }
