@@ -77,35 +77,33 @@ require_once("../includes/head.php") ?>
         <section>
             <div class="wrapper-sect">
                 <?php if (!empty($error) && $error != "") { ?>
-                <div class="alert alert-danger">
-                    <strong>Erreur !</strong>
-                    <?= $error ?>
-                </div>
+                    <div class="alert alert-danger">
+                        <strong>Erreur !</strong>
+                        <?= $error ?>
+                    </div>
                 <?php } ?>
                 <?php if (!empty($success) && $success != "") { ?>
-                <div class="alert alert-success">
-                    <strong>Génial !</strong>
-                    <?= $success ?>
-                </div>
+                    <div class="alert alert-success">
+                        <strong>Génial !</strong>
+                        <?= $success ?>
+                    </div>
                 <?php } ?>
                 <form method="post" action="">
                     <div><label for="mail1">Email joueur 1</label>
                         <div id="myDropdown1" class="dropdown-content">
-                            <input type="text" name="mail1" placeholder="Search.." id="myInput1 mail1" class="myInput"
-                                onkeyup="filterFunction(this)" onclick="toggleList(this)" required>
+                            <input type="text" name="mail1" placeholder="Search.." id="myInput1" class="myInput" onkeyup="filterFunction(this)" onclick="toggleList(this)" required>
                             <div id="dropdow-hidden1" class="dropdown-hidden">
                                 <?php foreach ($emails as $email) { ?>
-                                <p onclick="selectMail(this)" class="mails1"><?= $email["email"]  ?></p>
+                                    <p onclick="selectMail(this)" class="mails1"><?= $email["email"]  ?></p>
                                 <?php }; ?>
                             </div>
                         </div>
                         <label for="mail2">Email joueur 2</label>
                         <div id="myDropdown2" class="dropdown-content">
-                            <input type="text" name="mail2" placeholder="Search.." id="myInput2 mail2" class="myInput"
-                                onkeyup="filterFunction(this)" onclick="toggleList(this)" required>
+                            <input type="text" name="mail2" placeholder="Search.." id="myInput2" class="myInput" onkeyup="filterFunction(this)" onclick="toggleList(this)" required>
                             <div id="dropdow-hidden2" class="dropdown-hidden">
                                 <?php foreach ($emails as $email) { ?>
-                                <p onclick="selectMail(this)" class="mails2"><?= $email["email"]  ?></p>
+                                    <p onclick="selectMail(this)" class="mails2"><?= $email["email"]  ?></p>
                                 <?php }; ?>
                             </div>
                         </div>
@@ -120,51 +118,51 @@ require_once("../includes/head.php") ?>
 </body>
 <script src="../js/exchange.js"></script>
 <script>
-function selectMail(element) {
-    var input;
-    if (element.classList.contains("mails1")) {
-        input = document.getElementById("myInput1");
-    } else {
-        input = document.getElementById("myInput2");
-    }
-    input.textContent = element.textContent;
-    input.value = element.textContent;
-    filterFunction(input);
-}
-
-function filterFunction(element) {
-    var input, filter, ul, li, a, i;
-    console.log(element);
-    input = element;
-    if (element.id == "myInput1") {
-        div = document.getElementById("dropdow-hidden1");
-    } else if (element.id == "myInput2") {
-        div = document.getElementById("dropdow-hidden2");
-    }
-
-    filter = input.value.toUpperCase();
-    a = div.getElementsByTagName("p");
-    for (i = 0; i < a.length; i++) {
-        txtValue = a[i].textContent || a[i].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            a[i].style.display = "";
+    function selectMail(element) {
+        var input;
+        if (element.classList.contains("mails1")) {
+            input = document.getElementById("myInput1");
         } else {
-            a[i].style.display = "none";
+            input = document.getElementById("myInput2");
+        }
+        input.textContent = element.textContent;
+        input.value = element.textContent;
+        filterFunction(input);
+    }
+
+    function filterFunction(element) {
+        var input, filter, ul, li, a, i;
+        console.log(element);
+        input = element;
+        if (element.id == "myInput1") {
+            div = document.getElementById("dropdow-hidden1");
+        } else if (element.id == "myInput2") {
+            div = document.getElementById("dropdow-hidden2");
+        }
+
+        filter = input.value.toUpperCase();
+        a = div.getElementsByTagName("p");
+        for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
+            }
         }
     }
-}
 
-function toggleList(element) {
-    var input;
-    input = element;
-    if (element.id == "myInput1") {
-        div = document.getElementById("dropdow-hidden1");
-        div.classList.toggle("show");
-    } else if (element.id == "myInput2") {
-        div = document.getElementById("dropdow-hidden2");
-        div.classList.toggle("show");
+    function toggleList(element) {
+        var input;
+        input = element;
+        if (element.id == "myInput1") {
+            div = document.getElementById("dropdow-hidden1");
+            div.classList.toggle("show");
+        } else if (element.id == "myInput2") {
+            div = document.getElementById("dropdow-hidden2");
+            div.classList.toggle("show");
+        }
     }
-}
 </script>
 
 </html>
