@@ -77,35 +77,36 @@ require_once("../includes/head.php") ?>
         <section>
             <div class="wrapper-sect">
                 <?php if (!empty($error) && $error != "") { ?>
-                    <div class="alert alert-danger">
-                        <strong>Erreur !</strong>
-                        <?= $error ?>
-                    </div>
+                <div class="alert alert-danger">
+                    <strong>Erreur !</strong>
+                    <?= $error ?>
+                </div>
                 <?php } ?>
                 <?php if (!empty($success) && $success != "") { ?>
-                    <div class="alert alert-success">
-                        <strong>Génial !</strong>
-                        <?= $success ?>
-                    </div>
+                <div class="alert alert-success">
+                    <strong>Génial !</strong>
+                    <?= $success ?>
+                </div>
                 <?php } ?>
                 <form method="post" action="">
                     <label for="mail1">Email joueur 1</label>
                     <div id="myDropdown1" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput1" class="myInput" onkeyup="filterFunction(this)" onclick="toggleList(this)" required>
+                        <input type="text" placeholder="Search.." id="myInput1" class="myInput"
+                            onkeyup="filterFunction(this)" onclick="toggleList(this)" required>
                         <div id="dropdow-hidden1" class="dropdown-hidden">
-                            <p onclick="selectMail(this)">About</p>
-                            <p onclick="selectMail(this)">Base</p>
-                            <p onclick="selectMail(this)">Blog</p>
-                            <p onclick="selectMail(this)">Contact</p>
-                            <p onclick="selectMail(this)">Custom</p>
-                            <p onclick="selectMail(this)">Support</p>
-                            <p onclick="selectMail(this)">Tools</p>
+                            <p onclick="selectMail(this)" class="mails1">About</p>
+                            <p onclick="selectMail(this)" class="mails1">Base</p>
+                            <p onclick="selectMail(this)" class="mails1">Blog</p>
+                            <p onclick="selectMail(this)" class="mails1">Contact</p>
+                            <p onclick="selectMail(this)" class="mails1">Custom</p>
+                            <p onclick="selectMail(this)" class="mails1">Support</p>
+                            <p onclick="selectMail(this)" class="mails1">Tools</p>
                         </div>
                     </div>
                     <select name="mail1" id="mail1" required>
                         <option value="">--- Choisi un email ---</option>
                         <?php foreach ($emails as $email) { ?>
-                            <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
+                        <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
                         <?php }; ?>
                     </select>
 
@@ -113,7 +114,7 @@ require_once("../includes/head.php") ?>
                     <select name="mail2" id="mail2" required>
                         <option value="">--- Choisi un email ---</option>
                         <?php foreach ($emails as $email) { ?>
-                            <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
+                        <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
                         <?php }; ?>
                     </select>
                     <input type="submit" value="Valider" id="btn-exchange" disabled>
@@ -126,49 +127,48 @@ require_once("../includes/head.php") ?>
 </body>
 <script src="../js/exchange.js"></script>
 <script>
-    function selectMail(element) {
-        var input;
-        input = document.getElementById("myInput1");
-        input.textContent = element.textContent;
-        input.value = element.textContent;
-        filterFunction(element);
+function selectMail(element) {
+    var input;
+    input = document.getElementById("myInput1");
+    input.textContent = element.textContent;
+    input.value = element.textContent;
+    filterFunction(element);
+}
+
+function filterFunction(element) {
+    var input, filter, ul, li, a, i;
+    console.log(element);
+    input = element;
+    if (element.id == "myInput1") {
+        div = document.getElementById("dropdow-hidden1");
+    } else if (element.id == "myInput2") {
+        div = document.getElementById("dropdow-hidden2");
     }
 
-    function filterFunction(element) {
-        var input, filter, ul, li, a, i;
-        console.log(element);
-        input = element;
-        if (element.id == "myInput1") {
-            div = document.getElementById("dropdow-hidden1");
-        } else if (element.id == "myInput2") {
-            div = document.getElementById("dropdow-hidden2");
-        }
-
-        filter = input.value.toUpperCase();
-        console.log(filter);
-        a = div.getElementsByTagName("p");
-        for (i = 0; i < a.length; i++) {
-            txtValue = a[i].textContent || a[i].innerText;
-            console.log(txtValue);
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                a[i].style.display = "";
-            } else {
-                a[i].style.display = "none";
-            }
+    filter = input.textContent.toUpperCase();
+    console.log(filter);
+    a = div.getElementsByTagName("p");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
         }
     }
+}
 
-    function toggleList(element) {
-        var input;
-        input = element;
-        if (element.id == "myInput1") {
-            div = document.getElementById("dropdow-hidden1");
-            div.classList.toggle("show");
-        } else if (element.id == "myInput2") {
-            div = document.getElementById("dropdow-hidden2");
-            div.classList.toggle("show");
-        }
+function toggleList(element) {
+    var input;
+    input = element;
+    if (element.id == "myInput1") {
+        div = document.getElementById("dropdow-hidden1");
+        div.classList.toggle("show");
+    } else if (element.id == "myInput2") {
+        div = document.getElementById("dropdow-hidden2");
+        div.classList.toggle("show");
     }
+}
 </script>
 
 </html>
