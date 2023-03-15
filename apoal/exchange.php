@@ -77,22 +77,21 @@ require_once("../includes/head.php") ?>
         <section>
             <div class="wrapper-sect">
                 <?php if (!empty($error) && $error != "") { ?>
-                <div class="alert alert-danger">
-                    <strong>Erreur !</strong>
-                    <?= $error ?>
-                </div>
+                    <div class="alert alert-danger">
+                        <strong>Erreur !</strong>
+                        <?= $error ?>
+                    </div>
                 <?php } ?>
                 <?php if (!empty($success) && $success != "") { ?>
-                <div class="alert alert-success">
-                    <strong>Génial !</strong>
-                    <?= $success ?>
-                </div>
+                    <div class="alert alert-success">
+                        <strong>Génial !</strong>
+                        <?= $success ?>
+                    </div>
                 <?php } ?>
                 <form method="post" action="">
                     <label for="mail1">Email joueur 1</label>
                     <div id="myDropdown1" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput1" onkeyup="filterFunction(this)"
-                            onkeydown="hideList(this)" required>
+                        <input type="text" placeholder="Search.." id="myInput1" onkeyup="filterFunction(this)" onmousedown="toggleList(this)" onfocus="toggleList(this)" required>
                         <div id="dropdow-hidden1" class="dropdown-hidden">
                             <p onclick="selectMail(this)">About</p>
                             <p onclick="selectMail(this)">Base</p>
@@ -106,7 +105,7 @@ require_once("../includes/head.php") ?>
                     <select name="mail1" id="mail1" required>
                         <option value="">--- Choisi un email ---</option>
                         <?php foreach ($emails as $email) { ?>
-                        <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
+                            <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
                         <?php }; ?>
                     </select>
 
@@ -114,7 +113,7 @@ require_once("../includes/head.php") ?>
                     <select name="mail2" id="mail2" required>
                         <option value="">--- Choisi un email ---</option>
                         <?php foreach ($emails as $email) { ?>
-                        <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
+                            <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
                         <?php }; ?>
                     </select>
                     <input type="submit" value="Valider" id="btn-exchange" disabled>
@@ -127,48 +126,46 @@ require_once("../includes/head.php") ?>
 </body>
 <script src="../js/exchange.js"></script>
 <script>
-function selectMail(element) {
-    var input;
-    input = document.getElementById("myInput");
-    input.textContent = element.textContent;
-    input.value = element.textContent;
-    filterFunction();
-}
-
-function filterFunction(element) {
-    var input, filter, ul, li, a, i;
-    input = element;
-    if (element.id = "myInput1") {
-        div = document.getElementById("dropdow-hidden1");
-        div.classList.toggle("show");
-    } else if (element.id = "myInput2") {
-        div = document.getElementById("dropdow-hidden2");
-        div.classList.toggle("show");
+    function selectMail(element) {
+        var input;
+        input = document.getElementById("myInput");
+        input.textContent = element.textContent;
+        input.value = element.textContent;
+        filterFunction();
     }
 
-    filter = input.value.toUpperCase();
-    a = div.getElementsByTagName("p");
-    for (i = 0; i < a.length; i++) {
-        txtValue = a[i].textContent || a[i].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            a[i].style.display = "";
-        } else {
-            a[i].style.display = "none";
+    function filterFunction(element) {
+        var input, filter, ul, li, a, i;
+        input = element;
+        if (element.id = "myInput1") {
+            div = document.getElementById("dropdow-hidden1");
+        } else if (element.id = "myInput2") {
+            div = document.getElementById("dropdow-hidden2");
+        }
+
+        filter = input.value.toUpperCase();
+        a = div.getElementsByTagName("p");
+        for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
+            }
         }
     }
-}
 
-function hideList(element) {
-    var input;
-    input = element;
-    if (element.id = "myInput1") {
-        div = document.getElementById("dropdow-hidden1");
-        div.classList.toggle("show");
-    } else if (element.id = "myInput2") {
-        div = document.getElementById("dropdow-hidden2");
-        div.classList.toggle("show");
+    function toggleList(element) {
+        var input;
+        input = element;
+        if (element.id = "myInput1") {
+            div = document.getElementById("dropdow-hidden1");
+            div.classList.toggle("show");
+        } else if (element.id = "myInput2") {
+            div = document.getElementById("dropdow-hidden2");
+            div.classList.toggle("show");
+        }
     }
-}
 </script>
 
 </html>
