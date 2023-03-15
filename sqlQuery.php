@@ -246,3 +246,18 @@ function getLastExchangePlayer($pdo, $emailPlayer)
 
     return $stmt;
 }
+
+function loadBox($pdo)
+{
+    for ($i = 15; $i <= 200; $i++) {
+        $query = "INSERT INTO `box`(`NumBox`, `NbExchange`) VALUES ($i,'0')";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+
+        $j = $i * -1;
+        $query = "INSERT INTO `box`(`NumBox`, `NbExchange`) VALUES ($j,'0')";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+    }
+    return $stmt;
+}
