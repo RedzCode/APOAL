@@ -55,6 +55,10 @@ if ($request_method === 'POST') {
         $success = $_SESSION['success'];
         unset($_SESSION['success']);
     }
+    if (isset($_SESSION['email'])) {
+        $emailPlayer = $_SESSION['email'];
+        unset($_SESSION['email']);
+    }
 }
 ?>
 
@@ -82,7 +86,7 @@ require_once("../includes/head.php") ?>
                     <div class="alert alert-success">
                         <strong>Génial !</strong>
                         <?= $success ?>
-                        <p><a href="player.php?email=<?= $_SESSION['email'] ?>">Voir votre profil</a></p>
+                        <p><a href="player.php?email=<?= $emailPlayer ?>">Voir votre profil</a></p>
                     </div>
                 <?php } ?>
                 <form action="" method="POST">
