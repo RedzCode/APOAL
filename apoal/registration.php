@@ -29,8 +29,7 @@ if ($request_method === 'POST') {
 
             if ($domain == "ensc.fr") {
                 createPlayer($pdo, $name, $famName, $email);
-                $playerEmail = $email;
-                var_dump($playerEmail);
+                $_SESSION['email'] = $email;
                 $success = "Votre profil de joueur a été crée!";
             } else {
                 $error = "L'email doit être un mail ensc.fr";
@@ -43,6 +42,7 @@ if ($request_method === 'POST') {
     }
 
     $_SESSION['error'] = $error;
+
     $_SESSION['success'] = $success;
     header("Location: registration.php", true, 303);
     exit();
@@ -82,7 +82,7 @@ require_once("../includes/head.php") ?>
                     <div class="alert alert-success">
                         <strong>Génial !</strong>
                         <?= $success ?>
-                        <p><a href="player.php?email=<?= $playerEmail ?>">Voir votre profil</a></p>
+                        <p><a href="player.php?email=<?= $_SESSION['email'] ?>">Voir votre profil</a></p>
                     </div>
                 <?php } ?>
                 <form action="" method="POST">
