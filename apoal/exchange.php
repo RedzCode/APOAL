@@ -90,15 +90,18 @@ require_once("../includes/head.php") ?>
                 <?php } ?>
                 <form method="post" action="">
                     <label for="mail1">Email joueur 1</label>
-                    <div id="myDropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()" required>
-                        <p onclick="selectMail(this)">About</p>
-                        <p onclick="selectMail(this)">Base</p>
-                        <p onclick="selectMail(this)">Blog</p>
-                        <p onclick="selectMail(this)">Contact</p>
-                        <p onclick="selectMail(this)">Custom</p>
-                        <p onclick="selectMail(this)">Support</p>
-                        <p onclick="selectMail(this)">Tools</p>
+                    <div id="myDropdown1" class="dropdown-content">
+                        <input type="text" placeholder="Search.." id="myInput1" onkeyup="filterFunction(this)"
+                            onkeydown="hideList(this)" required>
+                        <div id="dropdow-hidden1">
+                            <p onclick="selectMail(this)">About</p>
+                            <p onclick="selectMail(this)">Base</p>
+                            <p onclick="selectMail(this)">Blog</p>
+                            <p onclick="selectMail(this)">Contact</p>
+                            <p onclick="selectMail(this)">Custom</p>
+                            <p onclick="selectMail(this)">Support</p>
+                            <p onclick="selectMail(this)">Tools</p>
+                        </div>
                     </div>
                     <select name="mail1" id="mail1" required>
                         <option value="">--- Choisi un email ---</option>
@@ -132,11 +135,18 @@ function selectMail(element) {
     filterFunction();
 }
 
-function filterFunction() {
+function filterFunction(element) {
     var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
+    input = element;
+    if (element.id = "myInput1") {
+        div = document.getElementById("dropdow-hidden1");
+        div.classList.toggle("show");
+    } else if (element.id = "myInput2") {
+        div = document.getElementById("dropdow-hidden2");
+        div.classList.toggle("show");
+    }
+
     filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown");
     a = div.getElementsByTagName("p");
     for (i = 0; i < a.length; i++) {
         txtValue = a[i].textContent || a[i].innerText;
@@ -145,6 +155,18 @@ function filterFunction() {
         } else {
             a[i].style.display = "none";
         }
+    }
+}
+
+function hideList(element) {
+    var input;
+    input = element;
+    if (element.id = "myInput1") {
+        div = document.getElementById("dropdow-hidden1");
+        div.classList.toggle("show");
+    } else if (element.id = "myInput2") {
+        div = document.getElementById("dropdow-hidden2");
+        div.classList.toggle("show");
     }
 }
 </script>
