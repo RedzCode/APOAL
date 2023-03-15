@@ -77,23 +77,33 @@ require_once("../includes/head.php") ?>
         <section>
             <div class="wrapper-sect">
                 <?php if (!empty($error) && $error != "") { ?>
-                    <div class="alert alert-danger">
-                        <strong>Erreur !</strong>
-                        <?= $error ?>
-                    </div>
+                <div class="alert alert-danger">
+                    <strong>Erreur !</strong>
+                    <?= $error ?>
+                </div>
                 <?php } ?>
                 <?php if (!empty($success) && $success != "") { ?>
-                    <div class="alert alert-success">
-                        <strong>Génial !</strong>
-                        <?= $success ?>
-                    </div>
+                <div class="alert alert-success">
+                    <strong>Génial !</strong>
+                    <?= $success ?>
+                </div>
                 <?php } ?>
                 <form method="post" action="">
                     <label for="mail1">Email joueur 1</label>
+                    <div id="myDropdown" class="dropdown-content">
+                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()" required>
+                        <a href="#about">About</a>
+                        <a href="#base">Base</a>
+                        <a href="#blog">Blog</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#custom">Custom</a>
+                        <a href="#support">Support</a>
+                        <a href="#tools">Tools</a>
+                    </div>
                     <select name="mail1" id="mail1" required>
                         <option value="">--- Choisi un email ---</option>
                         <?php foreach ($emails as $email) { ?>
-                            <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
+                        <option value=<?= $email["email"]  ?>><?= $email["email"]  ?></option>
                         <?php }; ?>
                     </select>
 
@@ -101,7 +111,7 @@ require_once("../includes/head.php") ?>
                     <select name="mail2" id="mail2" required>
                         <option value="">--- Choisi un email ---</option>
                         <?php foreach ($emails as $email) { ?>
-                            <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
+                        <option value=<?= $email["email"]  ?>><?= $email["email"] ?></option>
                         <?php }; ?>
                     </select>
                     <input type="submit" value="Valider" id="btn-exchange" disabled>
@@ -113,5 +123,22 @@ require_once("../includes/head.php") ?>
     <?php require("../includes/footer.php") ?>
 </body>
 <script src="../js/exchange.js"></script>
+<script>
+function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+</script>
 
 </html>
