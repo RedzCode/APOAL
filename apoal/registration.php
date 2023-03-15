@@ -29,6 +29,7 @@ if ($request_method === 'POST') {
 
             if ($domain == "ensc.fr") {
                 createPlayer($pdo, $name, $famName, $email);
+                $playerEmail = $email;
                 $success = "Votre profil de joueur a été crée!";
             } else {
                 $error = "L'email doit être un mail ensc.fr";
@@ -80,6 +81,7 @@ require_once("../includes/head.php") ?>
                     <div class="alert alert-success">
                         <strong>Génial !</strong>
                         <?= $success ?>
+                        <p><a href="<?= $playerEmail ?>">Voir votre profil</a></p>
                     </div>
                 <?php } ?>
                 <form action="" method="POST">

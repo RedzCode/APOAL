@@ -24,6 +24,7 @@ if ($request_method === 'GET') {
             $prenom = $player['Name'];
             $nom = $player['FamilyName'];
             $email = $player['Email'];
+            $numéro =  $player['NumBox'];
         } else {
             $texte = "Le joueur n'existe pas";
         }
@@ -58,9 +59,6 @@ require_once("../includes/head.php") ?>
                 </div>
             <?php  } ?>
         </section>
-
-        <div style="text-align: center; margin-top: 2%;"> <img class="img-gif" src="../assets/registration_player.gif" alt="meme-gif-Deal">
-        </div>
 
     </div>
     <?php require("../includes/footer.php") ?>
