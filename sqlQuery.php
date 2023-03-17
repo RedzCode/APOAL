@@ -1,7 +1,7 @@
 <?php
 function getAllPlayers($pdo)
 {
-    $query = "SELECT * FROM player ORDER BY NumBox ASC";
+    $query = "SELECT * FROM player ORDER BY CountExchange DESC, Name";
 
     $stmt = $pdo->prepare($query);
     $stmt->execute();

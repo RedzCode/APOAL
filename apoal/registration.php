@@ -102,7 +102,7 @@ require_once("../includes/head.php") ?>
                         <label for="email" class="form-label">Email ENSC</label>
                         <input type="email" class="form-control" id="email-register" name="email" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-apoal">S'inscrire</button>
+                    <button type="submit" class="btn btn-primary btn-apoal" disabled>S'inscrire</button>
                 </form>
             </div>
         </section>
