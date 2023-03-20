@@ -76,6 +76,10 @@ require_once("../includes/head.php") ?>
         <h1 class="pb-2">Inscription APOAL</h1>
         <section>
             <div class="wrapper-sect">
+                <div class="alert alert-danger">
+                    <strong>Il n'est plus possible de s'inscrire.</strong>
+                    <?= $error ?>
+                </div>
                 <?php if (!empty($error) && $error != "") { ?>
                     <div class="alert alert-danger">
                         <strong>Erreur !</strong>

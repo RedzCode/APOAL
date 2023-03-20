@@ -92,6 +92,10 @@ require_once("../includes/head.php") ?>
         <h1 class="pb-2">Echange numéros boites</h1>
         <section>
             <div class="wrapper-sect">
+                <div class="alert alert-danger">
+                    <strong>Le jeu est fini ! Il n'est plus possible de faire des échanges.</strong>
+                    <?= $error ?>
+                </div>
                 <?php if (!empty($error) && $error != "") { ?>
                     <div class="alert alert-danger">
                         <strong>Erreur !</strong>
