@@ -3,7 +3,7 @@
 <div align="center">
     <img src="assets/octo-apoal.png" alt="Logo" width="80" height="80">
 
-  <h3 align="center">APOAL POULPYSHOW LISTE BDA ENSC</h3>
+  <h3 align="center">Website PoulpyShow for the game APOAL</h3>
 
   <p align="center">
     An awesome README template to jumpstart your projects!
