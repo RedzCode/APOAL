@@ -13,7 +13,7 @@ APOAL has been made for the campaign of the art association at the ENSC (Ecole N
 This website is the interface that gives the possibility to play the APOAL Game.
 
 It is possible to : 
-crate a player account
+create a player account
 Exchange a box with an other player
 Access a list showing which players have which boxes.
 
